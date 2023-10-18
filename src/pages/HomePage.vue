@@ -117,27 +117,27 @@ export default {
 		<div ref="prova" @keyup.enter="search()" class="w-50">
 
 		</div>
+	</div>
 
 
-
-		<div class="container">
-			<div id="my-container" class="mt-5 d-flex justify-content-center flex-wrap align-content-stretch w-100">
-				<template v-if="aptLoading">
-					<LoadingComponent />
+	<div class="container">
+		<div id="my-container" class="mt-5 d-flex justify-content-center flex-wrap align-content-stretch w-100">
+			<template v-if="aptLoading">
+				<LoadingComponent />
+			</template>
+			<template v-if="!aptLoading">
+				<template v-if="apartments.length > 0 || apartments.lenght != null">
+					<div class="col-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in apartments" :key="i">
+						<ApartmentCard :name="apt.name" :address="apt.address" :path="apt.cover_img" />
+					</div>
 				</template>
-				<template v-if="!aptLoading">
-					<template v-if="apartments.length > 0 || apartments.lenght != null">
-						<div class="col-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in apartments" :key="i">
-							<ApartmentCard :name="apt.name" :address="apt.address" :path="apt.cover_img" />
-						</div>
-					</template>
-					<template v-else>
-						no results found
-					</template>
-					<button @click="nextPage" v-if="totalAptPages != nextPageCounter" class="btn btn-success">next</button>
+				<template v-else>
+					no results found
 				</template>
-			</div>
+				<button @click="nextPage" v-if="totalAptPages != nextPageCounter" class="btn btn-success">next</button>
+			</template>
 		</div>
+	</div>
 </template>
 
 <style lang="scss" scoped>
