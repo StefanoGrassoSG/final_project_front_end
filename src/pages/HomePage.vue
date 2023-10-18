@@ -16,6 +16,7 @@ import LoadingComponent from '../components/LoadingComponent.vue';
   },
   mounted() {
 		var options = {
+			minNumberOfCharacters: 0,
 			searchOptions: {
 			key: "KEiNGuhsySt5PgvkmCw7C9Sb5vGdacR6",
 			language: "it-IT",
@@ -29,7 +30,6 @@ import LoadingComponent from '../components/LoadingComponent.vue';
 		var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
 		var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
 		let prova = this.$refs.prova;
-		console.log(prova);
 		prova.appendChild(searchBoxHTML);
 
 		ttSearchBox.on("tomtom.searchbox.resultsfound", this.handleResultsFound)
@@ -38,17 +38,20 @@ import LoadingComponent from '../components/LoadingComponent.vue';
   methods: {
 	handleResultsFound(event) {
         var results = event.data.results;
-        console.log(results.autocomplete.context.inputQuery);
-        this.search(results.autocomplete.context.inputQuery);
+		if(event.data.results.fuzzySearch.results.length === 0 ){
+			this.getApt()
+		}
+		else{
+			this.search(results.autocomplete.context.inputQuery);
+		}
+        
     },
     getApt(){
 		this.aptLoading = true
         axios.get('http://127.0.0.1:8000/api/apartment')
             .then(res=>{
-                console.log(res.data.results)
                 this.apartments = res.data.results.data
 				this.totalAptPages = res.data.results.last_page
-				console.log(this.totalAptPages)
 				this.aptLoading = false
             })
 			.catch(err=>{
@@ -79,21 +82,15 @@ import LoadingComponent from '../components/LoadingComponent.vue';
 	nextPage(){
 		if(this.nextPageCounter < this.totalAptPages){
 			this.nextPageCounter++
-			console.log(this.totalAptPages)
-			console.log(this.nextPageCounter)
 		}
 		else{
 			this.nextPageCounter = 1
-			console.log(this.totalAptPages)
-			console.log(this.nextPageCounter)
 		}
 		this.aptLoading = true
 		axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 		.then(res=>{
                 console.log(res.data.results)
                 this.apartments = res.data.results.data
-				// this.totalAptPages = res.data.results.last_page
-				// console.log(this.totalAptPages)
 				this.aptLoading = false
             })
 			.catch(err=>{
