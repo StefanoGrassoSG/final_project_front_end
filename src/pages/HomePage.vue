@@ -7,6 +7,8 @@
   data() {
     return {
         apartments : null,
+		totalAptPages : null,
+		nextPageCounter : 1,
         aptLoading :false
     }
   },
@@ -15,14 +17,42 @@
 		this.aptLoading = true
         axios.get('http://127.0.0.1:8000/api/apartment')
             .then(res=>{
-                console.log(res.data.results.data)
+                console.log(res.data.results)
                 this.apartments = res.data.results.data
+				this.totalAptPages = res.data.results.last_page
+				console.log(this.totalAptPages)
 				this.aptLoading = false
             })
 			.catch(err=>{
 				console.log(err)
+				this.aptLoading = false
 			})
-    }
+    },
+	nextPage(){
+		if(this.nextPageCounter < this.totalAptPages){
+			this.nextPageCounter++
+			console.log(this.totalAptPages)
+			console.log(this.nextPageCounter)
+		}
+		else{
+			this.nextPageCounter = 1
+			console.log(this.totalAptPages)
+			console.log(this.nextPageCounter)
+		}
+		this.aptLoading = true
+		axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
+		.then(res=>{
+                console.log(res.data.results)
+                this.apartments = res.data.results.data
+				// this.totalAptPages = res.data.results.last_page
+				// console.log(this.totalAptPages)
+				this.aptLoading = false
+            })
+			.catch(err=>{
+				console.log(err)
+				this.aptLoading = false
+			})
+	}
   },
   created(){
     this.getApt();
@@ -57,6 +87,8 @@
 				<template v-else>
 					no results found
 				</template>
+				<button @click="nextPage" v-if="totalAptPages != nextPageCounter"
+					class="btn btn-success">next</button>
 		   </template>
         </div>
     </div>
