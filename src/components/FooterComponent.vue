@@ -14,7 +14,7 @@ export default {
 <template>
   <footer class="text-center mt-5">
     <div class="container footer-top">
-      <div class="my-col col-12 col-md-3">
+      <div class="my-col col-12 col-sm-3 mb-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
         <h4 class="list-title-footer">
           Assistenza
         </h4>
@@ -32,7 +32,7 @@ export default {
       </div>
 
       <!-- COL-2 -->
-      <div class="my-col col-12 col-md-3">
+      <div class="my-col col-12 col-sm-3 mb-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
         <h4 class="list-title-footer">
           Informazioni
         </h4>
@@ -50,7 +50,7 @@ export default {
       </div>
 
       <!-- COL-3 -->
-      <div class="my-col col-12 col-md-3">
+      <div class="my-col col-12 col-sm-3 mb-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
         <h4 class="list-title-footer">
           Le città più amate
         </h4>
@@ -71,7 +71,7 @@ export default {
       </div>
 
       <!-- COL-4 -->
-      <div class="my-col col-12 col-md-3 last-col">
+      <div class="my-col col-12 col-sm-3 mb-3  last-col">
         <div class="img-container">
           <img src="../assets/img/logo_ultimate.png" alt="">
         </div>
@@ -135,7 +135,7 @@ footer {
     }
 
     .img-container {
-      max-width: 130px;
+      max-width: 100px;
 
       img {
         width: 100%;
