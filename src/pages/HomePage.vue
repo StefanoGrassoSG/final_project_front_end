@@ -1,18 +1,46 @@
 <script>
-    import axios from "axios";
-    import BannerComponent from '../components/BannerComponent.vue';
-    import ApartmentCard from '../components/ApartmentCard.vue';
-    import LoadingComponent from '../components/LoadingComponent.vue';
+import axios from "axios";
+import BannerComponent from '../components/BannerComponent.vue';
+import ApartmentCard from '../components/ApartmentCard.vue';
+import LoadingComponent from '../components/LoadingComponent.vue';
+
   export default {
   data() {
     return {
         apartments : null,
 		totalAptPages : null,
 		nextPageCounter : 1,
-        aptLoading :false
+        aptLoading :false,
+		inputSearchbar: null
     }
   },
+  mounted() {
+		var options = {
+			searchOptions: {
+			key: "KEiNGuhsySt5PgvkmCw7C9Sb5vGdacR6",
+			language: "it-IT",
+			limit: 5,
+			},
+			autocompleteOptions: {
+			key: "KEiNGuhsySt5PgvkmCw7C9Sb5vGdacR6",
+			language: "it-IT",
+			},
+		}
+		var ttSearchBox = new tt.plugins.SearchBox(tt.services, options)
+		var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
+		let prova = this.$refs.prova;
+		console.log(prova);
+		prova.appendChild(searchBoxHTML);
+
+		ttSearchBox.on("tomtom.searchbox.resultsfound", this.handleResultsFound)
+
+	},
   methods: {
+	handleResultsFound(event) {
+        var results = event.data.results;
+        console.log(results.autocomplete.context.inputQuery);
+        this.search(results.autocomplete.context.inputQuery);
+    },
     getApt(){
 		this.aptLoading = true
         axios.get('http://127.0.0.1:8000/api/apartment')
@@ -28,6 +56,26 @@
 				this.aptLoading = false
 			})
     },
+	search(param) {
+		this.aptLoading = true
+		let data = {
+			data: param
+		}
+		axios.post('http://127.0.0.1:8000/api/apartment', data, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
+		.then(res => {
+			console.log(res)
+			this.apartments = res.data.results.data
+			this.totalAptPages = res.data.results.last_page
+			this.aptLoading = false
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	},
 	nextPage(){
 		if(this.nextPageCounter < this.totalAptPages){
 			this.nextPageCounter++
@@ -55,7 +103,7 @@
 	}
   },
   created(){
-    this.getApt();
+		this.getApt();
   },
   components: {
     BannerComponent,
@@ -70,6 +118,13 @@
         <h1 class="text-center my-5"> 
             QUESTO è IL CONTENUTO DELLA HOME PAGE
         </h1>
+
+		<div ref="prova" @keyup.enter="search()" class="w-25">
+	
+		</div>
+
+		
+
     <div class="container">
         <div class="d-flex justify-content-between flex-wrap align-content-stretch w-100">
 			<template v-if="aptLoading">
