@@ -49,6 +49,11 @@ export default {
                     Mq:
                 </span>
             </div>
+            <div>
+                <router-link :to="{ name: 'singleApt' }">
+                    Visualizza
+                </router-link>
+            </div>
         </div>
 
     </div>
