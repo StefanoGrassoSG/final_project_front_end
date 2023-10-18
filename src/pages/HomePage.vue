@@ -116,9 +116,12 @@ import LoadingComponent from '../components/LoadingComponent.vue';
             QUESTO è IL CONTENUTO DELLA HOME PAGE
         </h1>
 
-		<div ref="prova" @keyup.enter="search()" class="w-25">
+		<div class="d-flex justify-content-center mb-3">
+			<div ref="prova" @keyup.enter="search()" class="w-25">
 	
+			</div>
 		</div>
+	
 
 		
 
