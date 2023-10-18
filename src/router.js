@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import HomePage from './pages/HomePage.vue';
+import SinglePage from './pages/SinglePage.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -18,11 +19,16 @@ const router = createRouter({
         {
             path: '/login',
             name: 'login',
-           // component: LoginPage
+            // component: LoginPage
         },
         {
-           // path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound
-        }
+            // path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound
+        },
+        {
+            path: '/singleApt',
+            name: 'singleApt',
+            component: SinglePage
+        },
     ]
 });
 
