@@ -73,15 +73,15 @@ export default {
       <!-- COL-4 -->
       <div class="my-col col-12 col-md-3 last-col">
         <div class="img-container">
-          <img src="../assets/vue.svg" alt="">
+          <img src="../assets/img/logo_ultimate.png" alt="">
         </div>
 
       </div>
     </div>
 
     <div class="container footer-bottom ">
-      <div class="col-5">
-        <ul class="list-bottom">
+      <div class="col-6">
+        <ul class="list-bottom list-bottom-sx">
           <li>Privacy</li>
           <li>
             <span class="boolbnb-li">
@@ -93,8 +93,8 @@ export default {
           </li>
         </ul>
       </div>
-      <div class="col-5">
-        <ul class="list-bottom">
+      <div class="col-6">
+        <ul class="list-bottom list-bottom-dx">
           <li>Italiano (IT)</li>
           <li>EUR &euro;</li>
           <li>Social</li>
@@ -135,7 +135,7 @@ footer {
     }
 
     .img-container {
-      min-width: 100px;
+      max-width: 130px;
 
       img {
         width: 100%;
@@ -152,14 +152,30 @@ footer {
   .footer-bottom {
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid #00ABE8;
+    padding-top: 20px;
+
+    .list-bottom-dx {
+      display: flex;
+      justify-content: flex-end;
+
+      li {
+        margin-left: 50px;
+      }
+    }
+
+    .list-bottom-sx {
+      li {
+        margin-right: 50px;
+      }
+    }
 
     .list-bottom {
       display: flex;
-      justify-content: space-between;
+
 
       li {
         display: inline-block;
-        margin-right: 20px;
         font-weight: bold;
         color: #888A8C;
       }
