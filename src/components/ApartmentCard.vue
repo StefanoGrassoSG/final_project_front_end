@@ -23,14 +23,6 @@ export default {
 
 <template>
     <div class="card border rounded-4">
-        <div class="h-25">
-            <h3>
-                {{ name }}
-            </h3>
-            <h4>
-                address: {{ address }}
-            </h4>
-        </div>
         <div class="img h-75 border rounded-4">
             <img :src="'http://127.0.0.1:8000/storage/' + path" alt="" class="h-100 img-fluid"
                 v-if="path.startsWith('uploads')">
