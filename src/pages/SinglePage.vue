@@ -5,7 +5,7 @@ import axios from "axios";
 export default {
     data() {
         return {
-            
+            ip: null
         }
     },
     mounted() {
@@ -21,10 +21,28 @@ export default {
                 .catch(err=>{
                     console.log(err.response)
                 })
+        },
+         getIp(){
+            axios.get('https://api.ipify.org?format=json')
+                .then(res=>{
+                    console.log(res.data.ip)
+                    this.ip = res.data.ip
+                })
+        },
+        sendIp(){
+            data = {
+                ip:this.ip
+            }
+            axios.post('http://127.0.0.1:8000/api/apartment/',data,{
+                headers: {
+					'Content-Type': 'multipart/form-data'
+				}
+            })
         }
     },
     created() {
         this.getSingleApt();
+        this.getIp()
     },
     components: {
 
