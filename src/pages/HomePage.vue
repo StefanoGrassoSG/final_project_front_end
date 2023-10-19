@@ -11,7 +11,8 @@ export default {
 			totalAptPages: null,
 			nextPageCounter: 1,
 			aptLoading: false,
-			inputSearchbar: null
+			inputSearchbar: null,
+			buttonReset: null,
 		}
 	},
 	mounted() {
@@ -74,6 +75,7 @@ export default {
 					this.apartments = res.data.results.data
 					this.totalAptPages = res.data.results.last_page
 					this.aptLoading = false
+					this.buttonReset = res.data.results.total
 				})
 				.catch(err => {
 					console.log(err)
@@ -134,7 +136,7 @@ export default {
 				<template v-else>
 					no results found
 				</template>
-				<button @click="nextPage" class="btn btn-success">next</button>
+				<button v-if="buttonReset > 3" @click="nextPage" class="btn btn-success">next</button>
 			</template>
 		</div>
 	</div>
