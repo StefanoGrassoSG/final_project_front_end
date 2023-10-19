@@ -134,7 +134,7 @@ export default {
 				<template v-else>
 					no results found
 				</template>
-				<button @click="nextPage" v-if="totalAptPages != nextPageCounter" class="btn btn-success">next</button>
+				<button @click="nextPage" class="btn btn-success">next</button>
 			</template>
 		</div>
 	</div>
