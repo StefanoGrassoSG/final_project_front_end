@@ -17,7 +17,8 @@ export default {
         name: String,
         address: String,
         path: String,
-        price: Number
+        price: Number,
+        id:Number
     }
 }
 </script>
@@ -51,7 +52,7 @@ export default {
                 </span>
             </div>
             <div>
-                <router-link :to="{ name: 'singleApt' }">
+                <router-link :to="{ name: 'singleApt',params:{ id:id} }">
                     Visualizza
                 </router-link>
             </div>

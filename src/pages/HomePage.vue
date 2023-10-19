@@ -131,7 +131,7 @@ export default {
 			<template v-if="!aptLoading">
 				<template v-if="apartments.length > 0 || apartments.lenght != null">
 					<div class="col-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in apartments" :key="i">
-						<ApartmentCard :name="apt.name" :address="apt.address" :path="apt.cover_img" :price="apt.price"/>
+						<ApartmentCard :name="apt.name" :address="apt.address" :path="apt.cover_img" :price="apt.price" :id="apt.id"/>
 					</div>
 				</template>
 				<template v-else>

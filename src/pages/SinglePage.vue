@@ -5,16 +5,26 @@ import axios from "axios";
 export default {
     data() {
         return {
-
+            
         }
     },
     mounted() {
 
     },
     methods: {
-
+        getSingleApt(){
+            axios.get(`http://127.0.0.1:8000/api/apartment/${this.$route.params.id}`)
+                .then(res=>{
+                    console.log(res.data)
+                    
+                })
+                .catch(err=>{
+                    console.log(err.response)
+                })
+        }
     },
     created() {
+        this.getSingleApt();
     },
     components: {
 
