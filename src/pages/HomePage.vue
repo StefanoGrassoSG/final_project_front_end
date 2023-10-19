@@ -1,21 +1,23 @@
 <script>
+import { store } from "../store";
 import axios from "axios";
 import BannerComponent from '../components/BannerComponent.vue';
 import ApartmentCard from '../components/ApartmentCard.vue';
 import LoadingComponent from '../components/LoadingComponent.vue';
 import ReviewsComponent from "../components/ReviewsComponent.vue";
 import CitationComponent from "../components/CitationComponent.vue";
+import ModalComponent from "../components/ModalComponent.vue";
 
 
 export default {
 	data() {
 		return {
-			apartments: null,
 			totalAptPages: null,
 			nextPageCounter: 1,
 			aptLoading: false,
 			inputSearchbar: null,
 			buttonReset: null,
+			store
 		}
 	},
 	mounted() {
@@ -54,7 +56,7 @@ export default {
 			this.aptLoading = true
 			axios.get('http://127.0.0.1:8000/api/apartment')
 				.then(res => {
-					this.apartments = res.data.results.data
+					this.store.apartments = res.data.results.data
 					this.totalAptPages = res.data.results.last_page
 					this.aptLoading = false
 					this.buttonReset = res.data.results.total
@@ -76,7 +78,7 @@ export default {
 			})
 				.then(res => {
 					console.log(res)
-					this.apartments = res.data.results.data
+					this.store.apartments = res.data.results.data
 					this.totalAptPages = res.data.results.last_page
 					this.aptLoading = false
 					this.buttonReset = res.data.results.total
@@ -96,7 +98,7 @@ export default {
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 				.then(res => {
 					console.log(res.data.results)
-					this.apartments = res.data.results.data
+					this.store.apartments = res.data.results.data
 					this.aptLoading = false
 				})
 				.catch(err => {
@@ -114,6 +116,7 @@ export default {
     LoadingComponent,
 	ReviewsComponent,
     CitationComponent,
+	ModalComponent
 }
 }
 </script>
@@ -125,6 +128,10 @@ export default {
 		<div ref="prova" @keyup.enter="search()" class="w-50">
 
 		</div>
+
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+       		Filtri
+    	</button>
 	</div>
 
 
@@ -134,8 +141,8 @@ export default {
 				<LoadingComponent />
 			</template>
 			<template v-if="!aptLoading">
-				<template v-if="apartments.length > 0 || apartments.lenght != null">
-					<div class="col-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in apartments" :key="i">
+				<template v-if="store.apartments.length > 0 || store.apartments.lenght != null">
+					<div class="col-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in store.apartments" :key="i">
 						<ApartmentCard :name="apt.name" :address="apt.address" :path="apt.cover_img" :price="apt.price" :id="apt.id"/>
 					</div>
 				</template>
@@ -145,8 +152,10 @@ export default {
 				<button v-if="buttonReset > 3" @click="nextPage" class="btn btn-success">next</button>
 			</template>
 		</div>
-	</div>
 
+	
+	</div>
+	<ModalComponent />
 	<ReviewsComponent/>
 
 	<CitationComponent/>
