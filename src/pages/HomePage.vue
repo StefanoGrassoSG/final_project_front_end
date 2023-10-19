@@ -3,6 +3,9 @@ import axios from "axios";
 import BannerComponent from '../components/BannerComponent.vue';
 import ApartmentCard from '../components/ApartmentCard.vue';
 import LoadingComponent from '../components/LoadingComponent.vue';
+import ReviewsComponent from "../components/ReviewsComponent.vue";
+import CitationComponent from "../components/CitationComponent.vue";
+
 
 export default {
 	data() {
@@ -106,10 +109,12 @@ export default {
 		this.getApt();
 	},
 	components: {
-		BannerComponent,
-		ApartmentCard,
-		LoadingComponent
-	}
+    BannerComponent,
+    ApartmentCard,
+    LoadingComponent,
+	ReviewsComponent,
+    CitationComponent,
+}
 }
 </script>
 
@@ -141,6 +146,11 @@ export default {
 			</template>
 		</div>
 	</div>
+
+	<ReviewsComponent/>
+
+	<CitationComponent/>
+
 </template>
 
 <style lang="scss" scoped>
