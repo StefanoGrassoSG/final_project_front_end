@@ -54,6 +54,7 @@ export default {
 					this.apartments = res.data.results.data
 					this.totalAptPages = res.data.results.last_page
 					this.aptLoading = false
+					this.buttonReset = res.data.results.total
 				})
 				.catch(err => {
 					console.log(err)
