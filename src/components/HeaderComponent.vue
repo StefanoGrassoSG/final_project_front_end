@@ -15,7 +15,7 @@ export default {
   <header class="text-center mb-5 justify-content-between">
       <div class="row shadow p-3 mb-5 bg-body-tertiary rounded">
           <div class="col-4 logo">
-            <a href="#">
+            <a href="http://localhost:5174">
               <img src="../assets/img/logo_ultimate.png" alt="">
             </a>
           </div>
