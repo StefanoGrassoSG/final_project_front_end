@@ -43,7 +43,7 @@ export default {
                 <span class="info-small-apt">
                     Prezzo:
                 </span>
-                {{ price }} X&euro;/notte
+                {{ price }} &euro;/notte
             </div>
             <div>
                 <span class="info-small-apt">
