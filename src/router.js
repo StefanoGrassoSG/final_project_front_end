@@ -25,7 +25,7 @@ const router = createRouter({
             // path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound
         },
         {
-            path: '/singleApt',
+            path: '/singleApt/:id',
             name: 'singleApt',
             component: SinglePage
         },
