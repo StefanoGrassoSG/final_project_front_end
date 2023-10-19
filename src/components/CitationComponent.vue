@@ -13,7 +13,7 @@ export default {
 
 <template>
     <div class="container">
-        <div class="row align-items-center justify-content-center p-4 citation-container">
+        <div class="row align-items-center justify-content-center p-4 citation-container my-5">
             <div class="col-6 fly-house">
                 <img src="../assets/img/fly-house.png" alt="">
             </div>
