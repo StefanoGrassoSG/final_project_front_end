@@ -16,7 +16,8 @@ export default {
     props: {
         name: String,
         address: String,
-        path: String
+        path: String,
+        price: Number
     }
 }
 </script>
