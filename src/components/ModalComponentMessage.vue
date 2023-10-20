@@ -57,26 +57,27 @@ export default {
                     <div class="modal-body">
                         <form action="" method="post">
                             <div class="form-group mb-4">
-                                <label for="exampleFormControlInput1">Nome</label>
+                                <label for="exampleFormControlInput1">Nome <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome"
-                                    v-model="data.name">
+                                    v-model="data.name" required>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="exampleFormControlInput1">Oggetto</label>
+                                <label for="exampleFormControlInput1">Oggetto <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Oggetto"
-                                    v-model="data.object">
+                                    v-model="data.object" required>
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="exampleFormControlInput1">Contenuto</label>
+                                <label for="exampleFormControlInput1">Contenuto <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Contenuto" v-model="data.content">
+                                    placeholder="Contenuto" v-model="data.content" required>
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="exampleFormControlInput1">Email address</label>
+                                <label for="exampleFormControlInput1">Email address <span
+                                        class="text-danger">*</span></label>
                                 <input type="email" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="name@example.com" v-model="data.email">
+                                    placeholder="name@example.com" v-model="data.email" required>
                             </div>
 
                             <div class="modal-footer">
@@ -120,6 +121,11 @@ export default {
 @use "../assets/scss/main";
 
 h1 {
+    color: #3461AB;
+    font-weight: bold;
+}
+
+label {
     color: #3461AB;
     font-weight: bold;
 }

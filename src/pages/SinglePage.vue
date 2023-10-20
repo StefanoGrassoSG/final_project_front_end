@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import ModalComponentMessage from "../components/ModalComponentMessage.vue";
+import ModalComponentImages from "../components/ModalComponentImages.vue";
 import LoadingComponent from '../components/LoadingComponent.vue';
 
 
@@ -60,19 +61,21 @@ export default {
     },
     components: {
         ModalComponentMessage,
-        LoadingComponent
+        LoadingComponent,
+        ModalComponentImages
 
     }
 }
 </script>
 
 <template>
-    <template v-if="loading">
+    <template v-if="loading" class="loading-div">
         <LoadingComponent />
     </template>
 
     <template v-if="!loading">
         <ModalComponentMessage />
+        <ModalComponentImages />
 
         <div class="container">
             <h1>
@@ -80,16 +83,17 @@ export default {
             </h1>
             <section class="img-container my-5">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-12">
                         <div class="card">
                             <div class="card-body">
                                 <img class="img-fluid" v-bind:src="singleApt.cover_img" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
+
+                    <div class="col-md-6 col-12 d-none d-md-block">
                         <div class="row">
-                            <div v-for="singleImg in singleApt.image" :key="index" class="col-6 extra-img">
+                            <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index" class="col-6 extra-img">
                                 <div class="card">
                                     <div class="card-body">
                                         <img class="img-fluid" v-bind:src="singleImg.src" alt="">
@@ -104,6 +108,11 @@ export default {
             <section class="info-container mb-5">
                 <div class="row mx-1">
                     <div class="col-md-6 col-sm-12">
+                        <div class="mb-5">
+                            <button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#modalImages">
+                                Visualizza tutte le immagini
+                            </button>
+                        </div>
                         <div>
                             <h3>
                                 Descrizione
@@ -165,7 +174,7 @@ export default {
                                     Servizi inclusi
                                 </h3>
                                 <ul>
-                                    <li class="fs-5 d-flex d-lg-inline mx-2" v-for="singleService in singleApt.services"
+                                    <li class="fs-5 d-flex d-lg-inline mx-2" v-for=" singleService  in  singleApt.services "
                                         :key="index">
                                         {{ singleService.name }}
                                     </li>
@@ -278,6 +287,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.loading-div {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 h1 {
     color: #3461AB;
     font-weight: bold;

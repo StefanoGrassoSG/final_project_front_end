@@ -129,9 +129,13 @@ export default {
 
 		</div>
 
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-			Filtri
-		</button>
+		<div class="mt-3">
+			<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				Ricerca Avanzata
+			</button>
+		</div>
+
+
 	</div>
 
 
@@ -165,6 +169,24 @@ export default {
 <style lang="scss" scoped>
 .search-bar-div {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
+}
+
+.btn-contact {
+	padding: 8px;
+	font-size: 13px;
+	background-color: #00ABE8;
+	color: white;
+	font-weight: bold;
+	border-radius: 10px !important;
+	border: none !important;
+}
+
+.btn-contact:hover {
+	background-color: #3461AB;
+	color: white;
+	font-weight: bold;
 }
 </style>
