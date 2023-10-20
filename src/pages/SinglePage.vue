@@ -102,7 +102,7 @@ export default {
                 </div>
             </section>
             <section class="info-container mb-5">
-                <div class="row">
+                <div class="row mx-1">
                     <div class="col-md-6 col-sm-12">
                         <div>
                             <h3>
@@ -123,31 +123,41 @@ export default {
                         </div>
                         <div class="info d-flex flex-column justify-content-md-end">
                             <div class="card-body card-info-apt d-flex flex-wrap">
-                                <div class="col-12 col-md-6">
-                                    <ul>
-                                        <li class="mb-3">
+                                <div class="col-12">
+                                    <div class="row align-items-center">
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/camere.png" alt="">
+                                            </div>
                                             <span class="span-info">N. stanze: </span>{{ singleApt.room }}
-                                        </li>
-                                        <li class="mb-3">
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/bagni.png" alt="">
+                                            </div>
                                             <span class="span-info">N. bagni: </span>{{ singleApt.bathroom }}
-                                        </li>
-                                        <li>
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/prezzo.png" alt="">
+                                            </div>
                                             <span class="span-info">Prezzo/notte: </span>{{ singleApt.price }}&euro;
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <ul>
-                                        <li class="mb-3">
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/letti_giusto.png" alt="">
+                                            </div>
                                             <span class="span-info">N. letti: </span>{{ singleApt.bed }}
-                                        </li>
-                                        <li class="mb-3">
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/bagni.png" alt="">
+                                            </div>
                                             <span class="span-info">Bagno condiviso: </span>
                                             <span class="span-info" v-if="singleApt.shared_bathroom">Sì</span>
                                             <span class="span-info" v-else>No</span>
-                                        </li>
-                                    </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="services">
@@ -214,13 +224,15 @@ export default {
                                     </h4>
                                     <ul class="fs-5">
                                         <li>
-                                            Host dal: {{ singleApt.user.created_at.substr(0, 10) }}
+                                            <span class="span-info">Host dal: </span>{{
+                                                singleApt.user.created_at.substr(0,
+                                                    10) }}
                                         </li>
                                         <li>
-                                            Identita verificata <span class="text-green">&check;</span>
+                                            <span class="span-info">Identità: </span>verificata &check;
                                         </li>
                                         <li>
-                                            Email: {{ singleApt.user.email }}
+                                            <span class="span-info">Email: </span>{{ singleApt.user.email }}
                                         </li>
                                     </ul>
                                 </div>
@@ -311,6 +323,18 @@ ul {
         padding-bottom: 10px;
     }
 
+    .icon-div {
+        display: inline-block;
+        max-width: 40px;
+        max-height: 40px;
+        margin-right: 5px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+    }
 }
 
 
