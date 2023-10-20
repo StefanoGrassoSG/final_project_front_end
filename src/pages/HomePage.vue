@@ -179,9 +179,12 @@ export default {
 					</div>
 				</template>
 				<template v-else>
-					Nessun appartamento trovato
+					<h3>
+						Nessun appartamento trovato
+					</h3>
 				</template>
-				<div>
+				<div v-if="store.apartments.length > 0 || store.apartments.lenght != null"
+					class="col-12 d-flex justify-content-center">
 					<button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
 						&lt prev
 					</button>
