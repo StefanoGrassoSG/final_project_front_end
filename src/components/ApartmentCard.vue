@@ -18,7 +18,8 @@ export default {
         address: String,
         path: String,
         price: Number,
-        id:Number
+        id: Number,
+        square_meter: Number
     }
 }
 </script>
@@ -48,11 +49,12 @@ export default {
             </div>
             <div>
                 <span class="info-small-apt">
-                    Mq:
+                    Metratura:
                 </span>
+                {{ square_meter }}mq
             </div>
-            <div>
-                <router-link :to="{ name: 'singleApt',params:{ id:id} }">
+            <div class="div-btn-view">
+                <router-link :to="{ name: 'singleApt', params: { id: id } }" class="btn-contact">
                     Visualizza
                 </router-link>
             </div>
@@ -62,6 +64,27 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.div-btn-view {
+    margin: 10px 0;
+}
+
+.btn-contact {
+    padding: 5px;
+    font-size: 13px;
+    background-color: #00ABE8;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px !important;
+    border: none !important;
+    text-decoration: none;
+}
+
+.btn-contact:hover {
+    background-color: #3461AB;
+    color: white;
+    font-weight: bold;
+}
+
 img {
     border-start-end-radius: 10px;
     border-start-start-radius: 10px;

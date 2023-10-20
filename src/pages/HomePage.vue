@@ -111,13 +111,13 @@ export default {
 		this.getApt();
 	},
 	components: {
-    BannerComponent,
-    ApartmentCard,
-    LoadingComponent,
-	ReviewsComponent,
-    CitationComponent,
-	ModalComponent
-}
+		BannerComponent,
+		ApartmentCard,
+		LoadingComponent,
+		ReviewsComponent,
+		CitationComponent,
+		ModalComponent
+	}
 }
 </script>
 
@@ -130,8 +130,8 @@ export default {
 		</div>
 
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-       		Filtri
-    	</button>
+			Filtri
+		</button>
 	</div>
 
 
@@ -143,23 +143,23 @@ export default {
 			<template v-if="!aptLoading">
 				<template v-if="store.apartments.length > 0 || store.apartments.lenght != null">
 					<div class="col-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in store.apartments" :key="i">
-						<ApartmentCard :name="apt.name" :address="apt.address" :path="apt.cover_img" :price="apt.price" :id="apt.id"/>
+						<ApartmentCard :name="apt.name" :address="apt.address" :path="apt.cover_img" :price="apt.price"
+							:id="apt.id" :square_meter="apt.square_meter" />
 					</div>
 				</template>
 				<template v-else>
-					no results found
+					Nessun appartamento trovato
 				</template>
 				<button v-if="buttonReset > 3" @click="nextPage" class="btn btn-success">next</button>
 			</template>
 		</div>
 
-	
+
 	</div>
 	<ModalComponent />
-	<ReviewsComponent/>
+	<ReviewsComponent />
 
-	<CitationComponent/>
-
+	<CitationComponent />
 </template>
 
 <style lang="scss" scoped>

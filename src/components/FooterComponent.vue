@@ -72,9 +72,11 @@ export default {
 
       <!-- COL-4 -->
       <div class="my-col col-12 col-sm-3 mb-3  last-col">
-        <div class="img-container">
-          <img src="../assets/img/logo_ultimate.png" alt="">
-        </div>
+        <a href="#">
+          <div class="img-container">
+            <img src="../assets/img/logo_ultimate.png" alt="">
+          </div>
+        </a>
 
       </div>
     </div>
