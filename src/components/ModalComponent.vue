@@ -101,7 +101,7 @@ export default {
                 </div>
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                    <button type="button" @click="searchWithFilters" class="btn btn-primary">
+                    <button type="button" @click="searchWithFilters" data-bs-dismiss="modal" class="btn btn-primary">
                         Cerca
                     </button>
                 </div>
