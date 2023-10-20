@@ -2,51 +2,51 @@
 import { store } from "../store";
 import axios from "axios";
 export default {
-  data() {
-    return {
-        data: {
-            numberOfBeds: null,
-            numberOfRooms: null,
-            price: null,
-            selectedServices: []
-		},
-        services: [],
-        store
-    }
-  },
-  methods: {
-    getServices() {
-      this.aptLoading = true;
-      axios
-        .get("http://127.0.0.1:8000/api/service")
-        .then((res) => {
-          this.services = res.data.data;
-          console.log(this.services);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    data() {
+        return {
+            data: {
+                numberOfBeds: null,
+                numberOfRooms: null,
+                price: null,
+                selectedServices: []
+            },
+            services: [],
+            store
+        }
     },
-    searchWithFilters() {
-      console.log(this.data);
-      this.aptLoading = true
-			axios.post('http://127.0.0.1:8000/api/filterApt', this.data, {
-				headers: {
-					'Content-Type': 'multipart/form-data'
-				}
-			})
-            .then(res => {
-               this.store.apartments = res.data.results
-               console.log(res.data.results)
+    methods: {
+        getServices() {
+            this.aptLoading = true;
+            axios
+                .get("http://127.0.0.1:8000/api/service")
+                .then((res) => {
+                    this.services = res.data.data;
+                    console.log(this.services);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        searchWithFilters() {
+            console.log(this.data);
+            this.aptLoading = true
+            axios.post('http://127.0.0.1:8000/api/filterApt', this.data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             })
-            .catch(err => {
-                console.log(err)
-            })
+                .then(res => {
+                    this.store.apartments = res.data.results
+                    console.log(res.data.results)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        },
     },
-  },
-  created() {
-    this.getServices();
-  },
+    created() {
+        this.getServices();
+    },
 };
 </script>
 
@@ -55,46 +55,47 @@ export default {
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Ricerca Avanzata</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex align-items-center">
-                    <div class="mb-4 col-12 col-md-6">
-                        <label for="exampleInputEmail1" class="form-label">N. letti</label>
-                        <input type="number" class="form-control"  id="name" aria-describedby="emailHelp" v-model="data.numberOfBeds">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ricerca Avanzata</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-center">
+                        <div class="mb-4 col-12 col-md-6">
+                            <label for="exampleInputEmail1" class="form-label">N. letti</label>
+                            <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
+                                v-model="data.numberOfBeds">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="mb-4 col-12 col-md-6">
+                            <label for="exampleInputEmail1" class="form-label">N. stanze</label>
+                            <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
+                                v-model="data.numberOfRooms">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="mb-4 col-12 col-md-6">
+                            <label for="exampleInputEmail1" class="form-label">Prezzo</label>
+                            <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
+                                v-model="data.price">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="check-box-services" v-for="(serv, i) in services" :key="i">
+                            <label :for="'service' + i" class="check-services me-2">{{ serv.name }}</label>
+                            <input class="me-4 mb-2 check-box-services-input" type="checkbox" :id="'service' + i"
+                                :value="serv.id" v-model="data.selectedServices">
+                        </div>
                     </div>
                 </div>
-                <div class="d-flex align-items-center">
-                    <div class="mb-4 col-12 col-md-6">
-                        <label for="exampleInputEmail1" class="form-label">N. stanze</label>
-                        <input type="number" class="form-control"  id="name"  aria-describedby="emailHelp" v-model="data.numberOfRooms">
-                    </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <button type="button" @click="searchWithFilters" class="btn btn-primary">Search</button>
                 </div>
-                <div class="d-flex align-items-center">
-                    <div class="mb-4 col-12 col-md-6">
-                        <label for="exampleInputEmail1" class="form-label">Prezzo</label>
-                        <input type="number" class="form-control" id="name" aria-describedby="emailHelp" v-model="data.price">
-                    </div>
-                </div>
-                <div class="d-flex align-items-center flex-wrap">
-                    <div class="check-box-services" v-for="(serv, i) in services" :key="i">
-                        <label :for="'service' + i" class="check-services me-2">{{ serv.name }}</label>
-                        <input class="me-4 mb-2 check-box-services-input" type="checkbox"  :id="'service' + i" :value="serv.id" v-model="data.selectedServices">
-                    </div> 
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" @click="searchWithFilters" class="btn btn-primary">Search</button>
-            </div>
             </div>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped>
-@use "../assets/scss/main";
-
-</style>
+<style lang="scss" scoped>@use "../assets/scss/main";</style>
