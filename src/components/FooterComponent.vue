@@ -74,7 +74,7 @@ export default {
       <div class="my-col col-12 col-sm-3 mb-3  last-col">
         <a href="#">
           <div class="img-container">
-            <img src="../assets/img/logo_ultimate.png" alt="">
+            <img src="../assets/img/jump-icon.png" alt="">
           </div>
         </a>
 
@@ -144,11 +144,7 @@ footer {
         height: 100%;
       }
     }
-
-
   }
-
-
 
   // FOOTER BOTTOM
   .footer-bottom {
