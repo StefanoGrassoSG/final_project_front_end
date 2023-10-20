@@ -77,13 +77,13 @@ export default {
                             </div>
 
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"
-                            @click="prevImg">
+                        <a v-if="singleApt.image.length > 1" class="carousel-control-prev" href="#carouselExampleControls"
+                            role="button" data-slide="prev" @click="prevImg">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"
-                            @click="nextImg">
+                        <a v-if="singleApt.image.length > 1" class="carousel-control-next" href="#carouselExampleControls"
+                            role="button" data-slide="next" @click="nextImg">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
