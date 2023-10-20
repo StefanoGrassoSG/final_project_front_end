@@ -88,11 +88,38 @@ export default {
 				})
 		},
 		nextPage() {
-			if (this.nextPageCounter < this.totalAptPages) {
+			if (this.nextPageCounter < this.totalAptPages - 1) {
+
+				console.log(this.nextPageCounter)
 				this.nextPageCounter++
+
+				console.log(this.nextPageCounter)
 			}
 			else {
 				this.nextPageCounter = 1
+			}
+			this.aptLoading = true
+			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
+				.then(res => {
+					console.log(res.data.results)
+					this.store.apartments = res.data.results.data
+					this.aptLoading = false
+				})
+				.catch(err => {
+					console.log(err)
+					this.aptLoading = false
+				})
+		}
+		,
+		prevPage() {
+			if (this.nextPageCounter > 1) {
+				console.log(this.nextPageCounter)
+				this.nextPageCounter--
+
+				console.log(this.nextPageCounter)
+			}
+			else {
+				this.nextPageCounter = this.totalAptPages
 			}
 			this.aptLoading = true
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
@@ -154,7 +181,15 @@ export default {
 				<template v-else>
 					Nessun appartamento trovato
 				</template>
-				<button v-if="buttonReset > 3" @click="nextPage" class="btn btn-success">next</button>
+				<div>
+					<button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
+						&lt prev
+					</button>
+					<button :disabled="nextPageCounter == totalAptPages - 1" @click="nextPage" class="btn-contact-opp ms-3">
+						next &gt
+					</button>
+				</div>
+
 			</template>
 		</div>
 
@@ -186,6 +221,22 @@ export default {
 
 .btn-contact:hover {
 	background-color: #3461AB;
+	color: white;
+	font-weight: bold;
+}
+
+.btn-contact-opp {
+	padding: 8px;
+	font-size: 13px;
+	background-color: #3461AB;
+	color: white;
+	font-weight: bold;
+	border-radius: 10px !important;
+	border: none !important;
+}
+
+.btn-contact-opp:hover {
+	background-color: #00ABE8;
 	color: white;
 	font-weight: bold;
 }
