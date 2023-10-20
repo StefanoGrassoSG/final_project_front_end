@@ -92,11 +92,90 @@ export default {
                     </div>
 
                     <div class="col-md-6 col-12 d-none d-md-block">
-                        <div class="row">
+                        <div v-if="singleApt.image.length >= 4" class="row">
                             <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index" class="col-6 extra-img">
                                 <div class="card">
                                     <div class="card-body">
                                         <img class="img-fluid" v-bind:src="singleImg.src" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="singleApt.image.length == 2">
+                            <div class="col-12 d-flex">
+                                <div class="my-col extra-img">
+                                    <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index"
+                                        class="card extra-img-card">
+                                        <div class="card-body">
+                                            <img class="img-fluid" v-bind:src="singleImg.src" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div v-if="singleApt.image.length < 4" class="my-col extra-img">
+                                    <div v-for="singleNotImg in (4 - singleApt.image.length)" class="card extra-img-card">
+                                        <div class="card-body">
+                                            <img class="img-fluid" src="../assets/img/icon_img.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="singleApt.image.length == 1">
+                            <div class="col-12 d-flex">
+                                <div class="my-col extra-img">
+                                    <div class="card extra-img-card">
+                                        <div class="card-body">
+                                            <img class="img-fluid" v-bind:src="singleApt.image[0].src" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="card extra-img-card">
+                                        <div class="card-body">
+                                            <img class="img-fluid" src="../assets/img/icon_img.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div v-if="singleApt.image.length < 4" class="my-col extra-img">
+                                    <div v-for="singleNotImg in 2" class="card extra-img-card">
+                                        <div class="card-body">
+                                            <img class="img-fluid" src="../assets/img/icon_img.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="singleApt.image.length == 3">
+                            <div class="col-12 d-flex">
+                                <div class="my-col extra-img">
+                                    <div class="card extra-img-card">
+                                        <div class="card-body">
+                                            <img class="img-fluid" v-bind:src="singleApt.image[0].src" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="card extra-img-card">
+                                        <div class="card-body">
+                                            <img class="img-fluid" v-bind:src="singleApt.image[1].src" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="card extra-img-card">
+                                        <div class="card-body">
+                                            <img class="img-fluid" v-bind:src="singleApt.image[2].src" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="card extra-img-card">
+                                        <div class="card-body">
+                                            <img class="img-fluid" src="../assets/img/icon_img.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="singleApt.image.length == 0" class="row h-100">
+                            <div v-for="singleNotImg in 4" class="col-6 extra-img">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img class="img-fluid" src="../assets/img/icon_img.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +187,7 @@ export default {
             <section class="info-container mb-5">
                 <div class="row mx-1">
                     <div class="col-md-6 col-sm-12">
-                        <div class="mb-5">
+                        <div v-if="singleApt.image.length > 0" class="mb-5">
                             <button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#modalImages">
                                 Visualizza tutte le immagini
                             </button>
@@ -148,12 +227,6 @@ export default {
                                         </div>
                                         <div class="col-12 col-sm-6 mb-3">
                                             <div class="icon-div">
-                                                <img src="../assets/img/prezzo.png" alt="">
-                                            </div>
-                                            <span class="span-info">Prezzo/notte: </span>{{ singleApt.price }}&euro;
-                                        </div>
-                                        <div class="col-12 col-sm-6 mb-3">
-                                            <div class="icon-div">
                                                 <img src="../assets/img/letti_giusto.png" alt="">
                                             </div>
                                             <span class="span-info">N. letti: </span>{{ singleApt.bed }}
@@ -165,6 +238,12 @@ export default {
                                             <span class="span-info">Bagno condiviso: </span>
                                             <span class="span-info" v-if="singleApt.shared_bathroom">Sì</span>
                                             <span class="span-info" v-else>No</span>
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/prezzo.png" alt="">
+                                            </div>
+                                            <span class="span-info">Prezzo/notte: </span>{{ singleApt.price }}&euro;
                                         </div>
                                     </div>
                                 </div>
@@ -312,9 +391,47 @@ ul {
     }
 }
 
+.card {
+    height: 100%;
+}
+
+.my-col {
+    width: calc(100% / 2);
+}
+
+.my-col:last-child {
+    margin-left: 5px;
+}
+
+
 .extra-img:nth-child(3),
 .extra-img:nth-child(4) {
     margin-top: 8px;
+}
+
+
+.extra-img-card {
+    height: calc(100% / 2);
+}
+
+.extra-img-card:nth-child(1),
+.extra-img-card:nth-child(2) {
+    margin-right: 9px;
+}
+
+.extra-img-card:nth-child(3),
+.extra-img-card:nth-child(4) {
+    margin-left: 9px;
+}
+
+.extra-img-card:nth-child(2),
+.extra-img-card:nth-child(4) {
+    margin-top: 7px;
+}
+
+.extra-img-card:nth-child(1),
+.extra-img-card:nth-child(3) {
+    margin-bottom: 7px;
 }
 
 .card {
