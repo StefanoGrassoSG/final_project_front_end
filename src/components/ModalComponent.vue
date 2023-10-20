@@ -60,42 +60,61 @@ export default {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex align-items-center">
-                        <div class="mb-4 col-12 col-md-6">
-                            <label for="exampleInputEmail1" class="form-label">N. letti</label>
-                            <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
-                                v-model="data.numberOfBeds">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex align-items-center">
+                                <div class="mb-4 col-12">
+                                    <label for="exampleInputEmail1" class="form-label">N. letti</label>
+                                    <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
+                                        v-model="data.numberOfBeds">
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="mb-4 col-12">
+                                    <label for="exampleInputEmail1" class="form-label">N. stanze</label>
+                                    <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
+                                        v-model="data.numberOfRooms">
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="mb-4 col-12">
+                                    <label for="exampleInputEmail1" class="form-label">Prezzo</label>
+                                    <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
+                                        v-model="data.price">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">Servizi</label>
+                            <div class="d-flex flex-column flex-wrap">
+                                <div class="check-box-services" v-for="(serv, i) in services" :key="i">
+                                    <label :for="'service' + i" class="check-services me-2">{{ serv.name }}</label>
+                                    <input class="me-4 mb-2 check-box-services-input" type="checkbox" :id="'service' + i"
+                                        :value="serv.id" v-model="data.selectedServices">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
-                        <div class="mb-4 col-12 col-md-6">
-                            <label for="exampleInputEmail1" class="form-label">N. stanze</label>
-                            <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
-                                v-model="data.numberOfRooms">
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <div class="mb-4 col-12 col-md-6">
-                            <label for="exampleInputEmail1" class="form-label">Prezzo</label>
-                            <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
-                                v-model="data.price">
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center flex-wrap">
-                        <div class="check-box-services" v-for="(serv, i) in services" :key="i">
-                            <label :for="'service' + i" class="check-services me-2">{{ serv.name }}</label>
-                            <input class="me-4 mb-2 check-box-services-input" type="checkbox" :id="'service' + i"
-                                :value="serv.id" v-model="data.selectedServices">
-                        </div>
-                    </div>
+
+
                 </div>
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                    <button type="button" @click="searchWithFilters" class="btn btn-primary">Search</button>
+                    <button type="button" @click="searchWithFilters" class="btn btn-primary">
+                        Cerca
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped>@use "../assets/scss/main";</style>
+<style lang="scss" scoped>
+@use "../assets/scss/main";
+
+label:not(.check-services) {
+    color: #3461AB;
+    font-weight: bold;
+}
+</style>

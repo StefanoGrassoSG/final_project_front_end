@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import ModalComponentMessage from "../components/ModalComponentMessage.vue";
+import ModalComponentImages from "../components/ModalComponentImages.vue";
 import LoadingComponent from '../components/LoadingComponent.vue';
 
 
@@ -60,19 +61,21 @@ export default {
     },
     components: {
         ModalComponentMessage,
-        LoadingComponent
+        LoadingComponent,
+        ModalComponentImages
 
     }
 }
 </script>
 
 <template>
-    <template v-if="loading">
+    <template v-if="loading" class="loading-div">
         <LoadingComponent />
     </template>
 
     <template v-if="!loading">
         <ModalComponentMessage />
+        <ModalComponentImages />
 
         <div class="container">
             <h1>
@@ -80,16 +83,17 @@ export default {
             </h1>
             <section class="img-container my-5">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-12">
                         <div class="card">
                             <div class="card-body">
                                 <img class="img-fluid" v-bind:src="singleApt.cover_img" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
+
+                    <div class="col-md-6 col-12 d-none d-md-block">
                         <div class="row">
-                            <div v-for="singleImg in singleApt.image" :key="index" class="col-6 extra-img">
+                            <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index" class="col-6 extra-img">
                                 <div class="card">
                                     <div class="card-body">
                                         <img class="img-fluid" v-bind:src="singleImg.src" alt="">
@@ -102,8 +106,13 @@ export default {
                 </div>
             </section>
             <section class="info-container mb-5">
-                <div class="row">
+                <div class="row mx-1">
                     <div class="col-md-6 col-sm-12">
+                        <div class="mb-5">
+                            <button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#modalImages">
+                                Visualizza tutte le immagini
+                            </button>
+                        </div>
                         <div>
                             <h3>
                                 Descrizione
@@ -123,31 +132,41 @@ export default {
                         </div>
                         <div class="info d-flex flex-column justify-content-md-end">
                             <div class="card-body card-info-apt d-flex flex-wrap">
-                                <div class="col-12 col-md-6">
-                                    <ul>
-                                        <li class="mb-3">
+                                <div class="col-12">
+                                    <div class="row align-items-center">
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/camere.png" alt="">
+                                            </div>
                                             <span class="span-info">N. stanze: </span>{{ singleApt.room }}
-                                        </li>
-                                        <li class="mb-3">
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/bagni.png" alt="">
+                                            </div>
                                             <span class="span-info">N. bagni: </span>{{ singleApt.bathroom }}
-                                        </li>
-                                        <li>
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/prezzo.png" alt="">
+                                            </div>
                                             <span class="span-info">Prezzo/notte: </span>{{ singleApt.price }}&euro;
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <ul>
-                                        <li class="mb-3">
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/letti_giusto.png" alt="">
+                                            </div>
                                             <span class="span-info">N. letti: </span>{{ singleApt.bed }}
-                                        </li>
-                                        <li class="mb-3">
+                                        </div>
+                                        <div class="col-12 col-sm-6 mb-3">
+                                            <div class="icon-div">
+                                                <img src="../assets/img/bagni.png" alt="">
+                                            </div>
                                             <span class="span-info">Bagno condiviso: </span>
                                             <span class="span-info" v-if="singleApt.shared_bathroom">Sì</span>
                                             <span class="span-info" v-else>No</span>
-                                        </li>
-                                    </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="services">
@@ -155,7 +174,7 @@ export default {
                                     Servizi inclusi
                                 </h3>
                                 <ul>
-                                    <li class="fs-5 d-flex d-lg-inline mx-2" v-for="singleService in singleApt.services"
+                                    <li class="fs-5 d-flex d-lg-inline mx-2" v-for=" singleService  in  singleApt.services "
                                         :key="index">
                                         {{ singleService.name }}
                                     </li>
@@ -214,13 +233,15 @@ export default {
                                     </h4>
                                     <ul class="fs-5">
                                         <li>
-                                            Host dal: {{ singleApt.user.created_at.substr(0, 10) }}
+                                            <span class="span-info">Host dal: </span>{{
+                                                singleApt.user.created_at.substr(0,
+                                                    10) }}
                                         </li>
                                         <li>
-                                            Identita verificata <span class="text-green">&check;</span>
+                                            <span class="span-info">Identità: </span>verificata &check;
                                         </li>
                                         <li>
-                                            Email: {{ singleApt.user.email }}
+                                            <span class="span-info">Email: </span>{{ singleApt.user.email }}
                                         </li>
                                     </ul>
                                 </div>
@@ -266,6 +287,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.loading-div {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 h1 {
     color: #3461AB;
     font-weight: bold;
@@ -311,6 +339,18 @@ ul {
         padding-bottom: 10px;
     }
 
+    .icon-div {
+        display: inline-block;
+        max-width: 40px;
+        max-height: 40px;
+        margin-right: 5px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+    }
 }
 
 
