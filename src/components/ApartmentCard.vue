@@ -17,7 +17,7 @@ export default {
         name: String,
         address: String,
         path: String,
-        price: Number,
+        price: String,
         id: Number,
         square_meter: Number
     }
@@ -27,9 +27,9 @@ export default {
 <template>
     <div class="card border rounded-4">
         <div class="img h-75 border rounded-4">
-            <img :src="'http://127.0.0.1:8000/storage/' + path" alt="" class="h-100 img-fluid"
-                v-if="path.startsWith('uploads')">
-            <img :src="path" alt="" v-if="!path.startsWith('uploads')" class="h-100 img-fluid">
+            <img src="../assets/img/icon_img.png" alt="" v-if="!path" class="h-100 img-fluid">
+            <img :src="path" alt="" v-else-if="!path.startsWith('uploads')" class="h-100 img-fluid">
+            <img :src="'http://127.0.0.1:8000/storage/' + path" alt="" class="h-100 img-fluid" v-else>
         </div>
         <div class="info-apt m-3">
             <h4>
