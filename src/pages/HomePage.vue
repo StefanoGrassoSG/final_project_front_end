@@ -175,7 +175,8 @@ export default {
 			</template>
 			<template v-if="!aptLoading">
 				<template v-if="store.apartments.length > 0 || store.apartments.lenght != null">
-					<div class="col-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in store.apartments" :key="i">
+					<div class="col-12 col-md-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in store.apartments"
+						:key="i">
 						<ApartmentCard :name="apt.name" :address="apt.address" :path="apt.cover_img" :price="apt.price"
 							:id="apt.id" :square_meter="apt.square_meter" />
 					</div>
