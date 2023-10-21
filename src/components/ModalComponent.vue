@@ -37,12 +37,14 @@ export default {
             })
                 .then(res => {
                     this.store.apartments = res.data.results
-                    console.log(res.data.results)
+                    this.store.totalApt = res.data.results.length
+                    console.log(res, this.store.totalApt, this.store.apartments)
                 })
                 .catch(err => {
                     console.log(err)
                 })
         },
+
     },
     created() {
         this.getServices();

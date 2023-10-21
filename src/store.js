@@ -1,5 +1,6 @@
 import { reactive } from 'vue';
 
 export const store = reactive({
-    apartments: null
+    apartments: null,
+    totalApt: 0
 })
