@@ -16,8 +16,8 @@ export default {
 			nextPageCounter: 1,
 			aptLoading: false,
 			inputSearchbar: null,
-			buttonReset: null,
-			store
+			store,
+			currentPage: ''
 		}
 	},
 	mounted() {
@@ -57,9 +57,12 @@ export default {
 			axios.get('http://127.0.0.1:8000/api/apartment')
 				.then(res => {
 					this.store.apartments = res.data.results.data
+					this.currentPage = res.data.results.current_page
 					this.totalAptPages = res.data.results.last_page
+					this.store.totalApt = res.data.results.total
 					this.aptLoading = false
-					this.buttonReset = res.data.results.total
+					console.log(res)
+
 				})
 				.catch(err => {
 					console.log(err)
@@ -81,14 +84,14 @@ export default {
 					this.store.apartments = res.data.results.data
 					this.totalAptPages = res.data.results.last_page
 					this.aptLoading = false
-					this.buttonReset = res.data.results.total
+					this.store.totalApt = res.data.results.total
 				})
 				.catch(err => {
 					console.log(err)
 				})
 		},
 		nextPage() {
-			if (this.nextPageCounter < this.totalAptPages - 1) {
+			if (this.nextPageCounter < this.totalAptPages) {
 
 				console.log(this.nextPageCounter)
 				this.nextPageCounter++
@@ -102,6 +105,7 @@ export default {
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 				.then(res => {
 					console.log(res.data.results)
+					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
 				})
@@ -115,7 +119,6 @@ export default {
 			if (this.nextPageCounter > 1) {
 				console.log(this.nextPageCounter)
 				this.nextPageCounter--
-
 				console.log(this.nextPageCounter)
 			}
 			else {
@@ -125,6 +128,7 @@ export default {
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 				.then(res => {
 					console.log(res.data.results)
+					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
 				})
@@ -161,8 +165,6 @@ export default {
 				Ricerca Avanzata
 			</button>
 		</div>
-
-
 	</div>
 
 
@@ -183,12 +185,13 @@ export default {
 						Nessun appartamento trovato
 					</h3>
 				</template>
-				<div v-if="store.apartments.length > 0 || store.apartments.lenght != null"
+				<div v-if="store.apartments.length > 0 || store.apartments.length != null"
 					class="col-12 d-flex justify-content-center">
 					<button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
 						&lt prev
 					</button>
-					<button :disabled="nextPageCounter == totalAptPages - 1" @click="nextPage" class="btn-contact-opp ms-3">
+					<button :disabled="currentPage == totalAptPages || store.apartments.length == store.totalApt"
+						@click="nextPage" class="btn-contact-opp ms-3">
 						next &gt
 					</button>
 				</div>
