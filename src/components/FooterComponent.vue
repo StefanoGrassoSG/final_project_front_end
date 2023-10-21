@@ -82,7 +82,7 @@ export default {
     </div>
 
     <div class="container footer-bottom ">
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <ul class="list-bottom list-bottom-sx">
           <li>Privacy</li>
           <li>
@@ -95,7 +95,7 @@ export default {
           </li>
         </ul>
       </div>
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <ul class="list-bottom list-bottom-dx">
           <li>Italiano (IT)</li>
           <li>EUR &euro;</li>
@@ -147,26 +147,66 @@ footer {
   }
 
   // FOOTER BOTTOM
+
+  @media screen and (min-width: 200px) and (max-width: 768px) {
+
+    .footer-bottom {
+
+      .list-bottom-dx {
+        display: flex;
+        justify-content: center;
+
+        li {
+          margin-left: 0px;
+        }
+      }
+
+      .list-bottom-sx {
+        display: flex;
+        justify-content: center;
+
+        li {
+          margin-right: 0px;
+        }
+      }
+
+      li {
+        padding: 0px 10px;
+      }
+
+    }
+  }
+
+  @media screen and (min-width: 770px) {
+    .footer-bottom {
+
+      .list-bottom-dx {
+        display: flex;
+        justify-content: flex-end;
+
+        li {
+          margin-left: 50px;
+        }
+      }
+
+      .list-bottom-sx {
+        li {
+          margin-right: 50px;
+        }
+      }
+
+    }
+
+  }
+
   .footer-bottom {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     border-top: 1px solid #00ABE8;
     padding-top: 20px;
 
-    .list-bottom-dx {
-      display: flex;
-      justify-content: flex-end;
 
-      li {
-        margin-left: 50px;
-      }
-    }
-
-    .list-bottom-sx {
-      li {
-        margin-right: 50px;
-      }
-    }
 
     .list-bottom {
       display: flex;
