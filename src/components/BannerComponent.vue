@@ -28,7 +28,7 @@ export default {
             <img src="../assets/img/see.png" alt="">
           </div>
           <h2>
-            <span>b</span>-see
+            <span>b</span>-sea
           </h2>
         </div>
         <div class="col-4 text-center city-img">
