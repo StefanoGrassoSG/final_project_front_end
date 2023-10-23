@@ -62,15 +62,15 @@ export default {
                                     v-model="data.name" required>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="exampleFormControlInput1">Oggetto <span class="text-danger">*</span></label>
+                                <label for="exampleFormControlInput1">Oggetto</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Oggetto"
-                                    v-model="data.object" required>
+                                    v-model="data.object">
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="exampleFormControlInput1">Contenuto <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Contenuto" v-model="data.content" required>
+                                <textarea class="form-control" id="exampleFormControlInput1" placeholder="Contenuto"
+                                    v-model="data.content" rows="5" required></textarea>
                             </div>
 
                             <div class="form-group mb-4">

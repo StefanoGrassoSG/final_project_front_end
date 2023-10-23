@@ -87,6 +87,13 @@ export default {
                         <div class="card">
                             <div class="card-body">
                                 <img class="img-fluid" v-bind:src="singleApt.cover_img" alt="">
+                                <img src="../assets/img/icon_img.png" alt="" v-if="!singleApt.cover_img"
+                                    class="h-100 img-fluid">
+
+                                <!-- <img :src="path" alt="" v-else-if="!path.startsWith('uploads')" class="h-100 img-fluid"> -->
+                                <img :src="'http://127.0.0.1:8000/storage/' + singleApt.cover_img" alt=""
+                                    class="h-100 img-fluid" v-else>
+
                             </div>
                         </div>
                     </div>
@@ -96,7 +103,9 @@ export default {
                             <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index" class="col-6 extra-img">
                                 <div class="card">
                                     <div class="card-body">
-                                        <img class="img-fluid" v-bind:src="singleImg.src" alt="">
+                                        <img class="img-fluid" v-if="singleImg.src == null"
+                                            v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.path" alt="">
+                                        <img class="img-fluid" v-else v-bind:src="singleImg.src" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +116,10 @@ export default {
                                     <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index"
                                         class="card extra-img-card">
                                         <div class="card-body">
-                                            <img class="img-fluid" v-bind:src="singleImg.src" alt="">
+                                            <img class="img-fluid" v-if="singleImg.src == null"
+                                                v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.path" alt="">
+                                            <img class="img-fluid" v-else v-bind:src="singleImg.src" alt="">
+
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +138,10 @@ export default {
                                 <div class="my-col extra-img">
                                     <div class="card extra-img-card">
                                         <div class="card-body">
-                                            <img class="img-fluid" v-bind:src="singleApt.image[0].src" alt="">
+                                            <img class="img-fluid" v-if="singleImg.src == null"
+                                                v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.image[0].path"
+                                                alt="">
+                                            <img class="img-fluid" v-else v-bind:src="singleApt.image[0].src" alt="">
                                         </div>
                                     </div>
                                     <div class="card extra-img-card">
@@ -145,30 +160,37 @@ export default {
                                 </div>
                             </div>
                         </div>
+                        <!-- DA SISTEMARE -->
                         <div v-if="singleApt.image.length == 3">
-                            <div class="col-12 d-flex">
-                                <div class="my-col extra-img">
-                                    <div class="card extra-img-card">
-                                        <div class="card-body">
-                                            <img class="img-fluid" v-bind:src="singleApt.image[0].src" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="card extra-img-card">
-                                        <div class="card-body">
-                                            <img class="img-fluid" v-bind:src="singleApt.image[1].src" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="card extra-img-card">
-                                        <div class="card-body">
-                                            <img class="img-fluid" v-bind:src="singleApt.image[2].src" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="card extra-img-card">
-                                        <div class="card-body">
-                                            <img class="img-fluid" src="../assets/img/icon_img.png" alt="">
-                                        </div>
+                            <div class="col-12 d-flex flex-wrap">
+
+                                <div class="col-6 card ">
+                                    <div class="card-body">
+                                        <img class="img-fluid" v-if="!singleApt.image[0].src"
+                                            v-bind:src="'http://127.0.0.1:8000/storage/' + singleApt.image[0].path" alt="">
+                                        <img class="img-fluid" v-else v-bind:src="singleApt.image[0].src" alt="">
                                     </div>
                                 </div>
+                                <div class="col-6 card ">
+                                    <div class="card-body">
+                                        <img class="img-fluid" v-if="!singleApt.image[1].src"
+                                            v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.image[1].path" alt="">
+                                        <img class="img-fluid" v-else v-bind:src="singleApt.image[1].src" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-6 card ">
+                                    <div class="card-body">
+                                        <img class="img-fluid" v-if="!singleApt.image[2].src"
+                                            v-bind:src="'http://127.0.0.1:8000/storage/' + singleApt.image[2].path" alt="">
+                                        <img class="img-fluid" v-else v-bind:src="singleApt.image[2].src" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-6 card ">
+                                    <div class="card-body mt-3">
+                                        <img class="img-fluid" src="../assets/img/icon_img.png" alt="">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div v-if="singleApt.image.length == 0" class="row h-100">
@@ -186,13 +208,16 @@ export default {
             </section>
             <section class="info-container mb-5">
                 <div class="row mx-1">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-12">
                         <div v-if="singleApt.image.length > 0" class="mb-5">
                             <button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#modalImages">
                                 Visualizza tutte le immagini
                             </button>
                         </div>
-                        <div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+
+                        <div class="me-4">
                             <h3>
                                 Descrizione
                             </h3>
@@ -372,8 +397,9 @@ export default {
     justify-content: center;
     align-items: center;
 }
+
 .text-justify {
-  text-align: justify;
+    text-align: justify;
 }
 
 h1 {
