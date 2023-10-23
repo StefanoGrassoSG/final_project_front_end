@@ -30,7 +30,7 @@ export default {
         <span v-if="arr.length > 0" class="badge-spons">
             <img src="../assets/img/coppa_grigia.png" alt="">
         </span>
-        <div class=" img h-75 border rounded-4">
+        <div class="img-fluid h-75 border rounded-4">
             <img src="../assets/img/icon_img.png" alt="" v-if="!path" class="h-100 img-fluid">
             <img :src="path" alt="" v-else-if="!path.startsWith('uploads')" class="h-100 img-fluid">
             <img :src="'http://127.0.0.1:8000/storage/' + path" alt="" class="h-100 img-fluid" v-else>
