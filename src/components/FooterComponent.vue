@@ -111,7 +111,7 @@ export default {
 @use "../assets/scss/main";
 
 footer {
-  border-top: 1px solid #3461AB;
+  border-top: 3px solid #ccdbf5;
 
   .footer-top {
     display: flex;

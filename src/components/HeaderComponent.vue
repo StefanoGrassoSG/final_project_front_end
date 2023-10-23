@@ -12,29 +12,31 @@ export default {
 </script>
 
 <template>
-  <header class="text-center mb-5 justify-content-between">
-    <div class="row shadow p-3 mb-5 bg-body-tertiary rounded">
-      <div class="col-4 logo">
-        <a href="http://localhost:5174">
-          <img src="../assets/img/logo_ultimate.png" alt="">
-        </a>
-      </div>
-      <div class="col-4 logo-complete">
-        <img src="../assets/img/logo_completo.png" alt="">
-      </div>
-      <div class="col-4">
-        <a href="http://127.0.0.1:8000/login">
-          <button type="submit" class="btn btn-logout">
-            <div class="d-flex align-items-center fw-bold">
-              <div class="text-out-lg d-none d-sm-block">
-                Log In
+  <header class="mb-5 shadow p-3 mb-5 bg-body-tertiary rounded">
+    <div class="container-fluid">
+      <div class="row px-4 align-items-center">
+        <div class="col logo">
+          <a href="http://localhost:5174">
+            <img src="../assets/img/logo_ultimate.png" alt="">
+          </a>
+        </div>
+        <div class="col logo-complete text-center">
+          <img src="../assets/img/logo_completo.png" alt="">
+        </div>
+        <div class="col text-end">
+          <a href="http://127.0.0.1:8000/login">
+            <button type="submit" class="btn btn-logout">
+              <div class="d-flex align-items-center fw-bold">
+                <div class="text-out-lg d-none d-sm-block">
+                  Log In
+                </div>
+                <div class="icon-out-lg">
+                  <img src="../assets/img/user_icon.png" alt="" class="user-logo img-fluid d-line">
+                </div>
               </div>
-              <div class="icon-out-lg">
-                <img src="../assets/img/user_icon.png" alt="" class="user-logo img-fluid d-line">
-              </div>
-            </div>
-          </button>
-        </a>
+            </button>
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -81,4 +83,37 @@ h1 {
     }
   }
 }
+
+//MEDIA-QUERY
+
+//LAPTOP
+@media screen and (max-width: 2000px) {
+
+}
+
+//MOBILE 
+@media screen and (min-width: 375px) and (max-width: 576px) {
+  header {
+    .container-fluid {
+      .row {
+        .logo {
+          img{
+            width: 30px;
+          }
+        }
+        .logo-complete {
+          img {
+            width: 120px;
+          }
+        }
+        .icon-out-lg {
+          img {
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
 </style>
