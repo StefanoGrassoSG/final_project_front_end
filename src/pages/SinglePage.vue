@@ -196,7 +196,7 @@ export default {
                             <h3>
                                 Descrizione
                             </h3>
-                            <p class="fs-5">
+                            <p class="fs-5 text-justify">
                                 {{ singleApt.description }}
                             </p>
                         </div>
@@ -215,7 +215,7 @@ export default {
                                     <div class="row align-items-center">
                                         <div class="col-12 col-sm-6 mb-3">
                                             <div class="icon-div">
-                                                <img src="../assets/img/camere.png" alt="">
+                                                <img src="../assets/img/room_bianco.png" alt="">
                                             </div>
                                             <span class="span-info">N. stanze: </span>{{ singleApt.room }}
                                         </div>
@@ -241,7 +241,7 @@ export default {
                                         </div>
                                         <div class="col-12 col-sm-6 mb-3">
                                             <div class="icon-div">
-                                                <img src="../assets/img/prezzo.png" alt="">
+                                                <img src="../assets/img/dollaro_bianco.png" alt="">
                                             </div>
                                             <span class="span-info">Prezzo/notte: </span>{{ singleApt.price }}&euro;
                                         </div>
@@ -371,6 +371,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.text-justify {
+  text-align: justify;
 }
 
 h1 {
