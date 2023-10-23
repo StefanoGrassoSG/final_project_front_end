@@ -26,7 +26,7 @@ export default {
 
 .review-container {
     margin-top: 40px;
-    padding: 4.25rem;
+    padding: 2.25rem;
     background-image: url(../assets/img/reviews-img.png);
     background-size: cover;
     background-repeat: no-repeat;

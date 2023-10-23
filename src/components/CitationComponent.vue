@@ -31,7 +31,7 @@ export default {
                     John Steinbeck
                 </h5>
             </div>
-            <div class="circle-img-back">
+            <div class="circle-img-back d-none d-md-block">
                 <img src="../assets/img/graphic_circle.png" alt="">
             </div>
         </div>
