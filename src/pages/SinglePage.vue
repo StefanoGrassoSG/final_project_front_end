@@ -174,7 +174,7 @@ export default {
                                 <div class="col-6 card ">
                                     <div class="card-body">
                                         <img class="img-fluid" v-if="!singleApt.image[1].src"
-                                            v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.image[1].path" alt="">
+                                            v-bind:src="'http://127.0.0.1:8000/storage/' + singleApt.image[1].path" alt="">
                                         <img class="img-fluid" v-else v-bind:src="singleApt.image[1].src" alt="">
                                     </div>
                                 </div>
