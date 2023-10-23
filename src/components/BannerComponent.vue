@@ -12,10 +12,10 @@ export default {
 </script>
 
 <template>
-  <section class="mb-5 text-center jumbo-section align-items-baseline">
+  <section class="mb-5 text-center jumbo-section align-items-baseline overflow-hidden">
     <div class="container">
       <div class="row align-items-baseline">
-        <div class="col-4 text-center mountain-img">
+        <div class="col-12 col-md-4  d-flex flex-column align-items-center text-center mountain-img">
           <div class="div-img">
             <img src="../assets/img/montain.png" alt="">
           </div>
@@ -23,7 +23,7 @@ export default {
             <span>b</span>-mountain
           </h2>
         </div>
-        <div class="col-4 text-center see-img">
+        <div class="col-12 col-md-4 d-flex flex-column align-items-center text-center see-img my-4">
           <div class="div-img">
             <img src="../assets/img/see.png" alt="">
           </div>
@@ -31,7 +31,7 @@ export default {
             <span>b</span>-sea
           </h2>
         </div>
-        <div class="col-4 text-center city-img">
+        <div class="col-12 col-md-4 d-flex flex-column align-items-center text-center city-img">
           <div class="div-img">
             <img src="../assets/img/city.png" alt="">
           </div>
@@ -79,7 +79,6 @@ export default {
     }
 
   }
-
   .see-img {
     .div-img {
       max-width: 230px;
@@ -132,7 +131,6 @@ export default {
 
     span {
       display: inline-block;
-      font-size: 3rem;
       color: #01B2F1;
 
       &:last-child {
@@ -140,7 +138,6 @@ export default {
       }
     }
   }
-
   .logo-abs-1 {
     position: absolute;
     top: 283px;
@@ -155,6 +152,48 @@ export default {
     right: -84px;
     max-width: 266px;
     opacity: 0.3;
+  }
+}
+
+//MOBILE 
+@media screen and (min-width: 375px) and (max-width: 576px) {
+  .jumbo-section {
+    margin-bottom: 2rem !important;
+    .mountain-img {
+      .div-img {
+        max-width: 260px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .see-img {
+      .div-img {
+        max-width: 200px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .city-img {
+      .div-img {
+        max-width: 200px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .title-jumbo {
+    font-size: 2rem;
+    margin-top: 2rem !important;
+    margin-bottom: 0.8rem !important;
+    }
   }
 }
 </style>

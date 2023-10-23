@@ -156,7 +156,7 @@ export default {
 	<BannerComponent />
 
 	<div class="search-bar-div">
-		<div ref="prova" @keyup.enter="search()" class="w-50">
+		<div ref="prova" @keyup.enter="search()" class="w-50 border-rounded-4">
 
 		</div>
 
