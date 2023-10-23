@@ -25,7 +25,10 @@ export default {
 </script>
 
 <template>
-    <div class="card border rounded-4">
+    <div class="card border rounded-4 card-Apt-grande">
+        <span class="badge-spons">
+            <img src="../assets/img/badge_spons.png" alt="">
+        </span>
         <div class="img h-75 border rounded-4">
             <img src="../assets/img/icon_img.png" alt="" v-if="!path" class="h-100 img-fluid">
             <img :src="path" alt="" v-else-if="!path.startsWith('uploads')" class="h-100 img-fluid">
@@ -64,6 +67,24 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.card-Apt-grande {
+    position: relative;
+
+    .badge-spons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 25px;
+
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+}
+
 .div-btn-view {
     margin: 10px 0;
 }
