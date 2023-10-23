@@ -19,14 +19,15 @@ export default {
         path: String,
         price: String,
         id: Number,
-        square_meter: Number
+        square_meter: Number,
+        arr: Array
     }
 }
 </script>
 
 <template>
     <div class="card border rounded-4 card-Apt-grande">
-        <span class="badge-spons">
+        <span v-if="arr.length > 0" class="badge-spons">
             <img src="../assets/img/coppa_grigia.png" alt="">
         </span>
         <div class=" img h-75 border rounded-4">
