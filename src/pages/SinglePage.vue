@@ -138,8 +138,8 @@ export default {
                                 <div class="my-col extra-img">
                                     <div class="card extra-img-card">
                                         <div class="card-body">
-                                            <img class="img-fluid" v-if="singleImg.src == null"
-                                                v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.image[0].path"
+                                            <img class="img-fluid" v-if="singleApt.image.src == null"
+                                                v-bind:src="'http://127.0.0.1:8000/storage/' + singleApt.image[0].path"
                                                 alt="">
                                             <img class="img-fluid" v-else v-bind:src="singleApt.image[0].src" alt="">
                                         </div>
