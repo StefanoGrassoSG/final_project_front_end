@@ -96,7 +96,7 @@ export default {
             <section class="img-container my-3">
                 <div class="row">
                     <div class="col-md-6 col-12">
-                        <div class="card">
+                        <div class="card big-img">
                             <div class="card-body py-2 px-0">
                                 <img class="img-fluid" v-bind:src="singleApt.cover_img" alt="">
                                 <img src="../assets/img/icon_img.png" alt="" v-if="!singleApt.cover_img"
@@ -113,7 +113,7 @@ export default {
                     <div class="col-md-6 col-12 d-none d-md-block col-img">
                         <div v-if="singleApt.image.length >= 4" class="row">
                             <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index" class="col-6 extra-img">
-                                <div class="card">
+                                <div class="card yes-img" data-bs-toggle="modal" data-bs-target="#modalImages">
                                     <div class="card-body">
                                         <img class="img-fluid" v-if="singleImg.src == null"
                                             v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.path" alt="">
@@ -126,7 +126,8 @@ export default {
                             <div class="col-12 d-flex">
                                 <div class="my-col extra-img">
                                     <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index"
-                                        class="card extra-img-card">
+                                        class="card extra-img-card yes-img" data-bs-toggle="modal"
+                                        data-bs-target="#modalImages">
                                         <div class="card-body">
                                             <img class="img-fluid" v-if="singleImg.src == null"
                                                 v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.path" alt="">
@@ -148,7 +149,8 @@ export default {
                         <div v-if="singleApt.image.length == 1">
                             <div class="col-12 d-flex">
                                 <div class="my-col extra-img">
-                                    <div class="card extra-img-card">
+                                    <div class="card extra-img-card yes-img" data-bs-toggle="modal"
+                                        data-bs-target="#modalImages">
                                         <div class="card-body">
                                             <img class="img-fluid" v-if="singleApt.image.src == null"
                                                 v-bind:src="'http://127.0.0.1:8000/storage/' + singleApt.image[0].path"
@@ -325,7 +327,7 @@ export default {
                         <h3 class="text-center">
                             Host
                         </h3>
-
+                        <hr>
                         <div class="row ">
                             <div class="col-12 col-md-3 my-3">
                                 <div class="d-flex justify-content-center justify-md-start">
@@ -342,7 +344,7 @@ export default {
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-3 my-3 d-flex justify-content-center">
+                            <div class="col-12 col-md-4 my-3 d-flex justify-content-center">
                                 <div class="languages">
                                     <h4 class="text-center text-md-start host-info">
                                         Informazioni
@@ -363,7 +365,7 @@ export default {
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-3 my-3 d-flex justify-content-center justify-md-start">
+                            <div class="col-12 col-md-2 my-3 d-flex justify-content-center justify-md-start">
                                 <div class="languages">
                                     <h4 class="host-info">
                                         Lingue
@@ -381,7 +383,7 @@ export default {
                                     </ul>
                                 </div>
                             </div>
-                            <div class=" col-12 col-md-3 my-3 d-flex flex-column align-items-center align-items-md-start">
+                            <div class=" col-12 col-md-3 my-3 d-flex flex-column align-items-center align-items-md-center">
                                 <h4 class="host-info">
                                     Hai dubbi?
                                 </h4>
@@ -446,8 +448,15 @@ export default {
             object-fit: cover;
         }
     }
+}
 
+.yes-img:hover {
+    cursor: pointer;
+    filter: brightness(85%)
+}
 
+.big-img:hover {
+    filter: brightness(85%)
 }
 
 .loading-div {
@@ -478,6 +487,7 @@ ul {
     li {
         list-style: none;
     }
+
 }
 
 .card {
@@ -592,9 +602,9 @@ ul {
 }
 
 .host-card {
-    border: 1px solid #3461AB;
     border-radius: 10px;
     padding-top: 10px;
+    background-color: #D2E6F8;
 
     .span-info {
         color: #888A8C;
