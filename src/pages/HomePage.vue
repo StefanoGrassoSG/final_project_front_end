@@ -177,8 +177,8 @@ export default {
 				<template v-if="store.apartments.length > 0 || store.apartments.lenght != null">
 					<div class="col-12 col-md-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in store.apartments"
 						:key="i">
-						<ApartmentCard :arr="apt.sponsorships" :name="apt.name" :address="apt.address" :path="apt.cover_img" :price="apt.price"
-							:id="apt.id" :square_meter="apt.square_meter" />
+						<ApartmentCard :arr="apt.sponsorships" :name="apt.name" :address="apt.address" :path="apt.cover_img"
+							:price="apt.price" :id="apt.id" :square_meter="apt.square_meter" />
 					</div>
 				</template>
 				<template v-else>
@@ -246,5 +246,9 @@ export default {
 	background-color: #00ABE8;
 	color: white;
 	font-weight: bold;
+}
+
+.btn-contact-opp:disabled {
+	background-color: gray;
 }
 </style>

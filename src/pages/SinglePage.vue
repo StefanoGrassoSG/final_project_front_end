@@ -78,9 +78,21 @@ export default {
         <ModalComponentImages />
 
         <div class="container">
-            <h1>
-                {{ singleApt.name }}
-            </h1>
+
+            <div class="card-body card-info-apt">
+                <div class="row">
+                    <div class="col-12 col-md">
+                        <h1>
+                            {{ singleApt.name }}
+                        </h1>
+                    </div>
+                    <div class="col-12 col-md d-flex justify-content-md-end">
+                        <button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Contatta l'host
+                        </button>
+                    </div>
+                </div>
+            </div>
             <section class="img-container my-5">
                 <div class="row">
                     <div class="col-md-6 col-12">
@@ -160,7 +172,6 @@ export default {
                                 </div>
                             </div>
                         </div>
-                        <!-- DA SISTEMARE -->
                         <div v-if="singleApt.image.length == 3">
                             <div class="col-12 d-flex flex-wrap">
 
