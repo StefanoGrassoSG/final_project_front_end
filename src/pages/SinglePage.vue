@@ -96,7 +96,7 @@ export default {
             <section class="img-container my-3">
                 <div class="row">
                     <div class="col-md-6 col-12">
-                        <div class="card">
+                        <div class="card big-img">
                             <div class="card-body py-2 px-0">
                                 <img class="img-fluid" v-bind:src="singleApt.cover_img" alt="">
                                 <img src="../assets/img/icon_img.png" alt="" v-if="!singleApt.cover_img"
@@ -113,7 +113,7 @@ export default {
                     <div class="col-md-6 col-12 d-none d-md-block col-img">
                         <div v-if="singleApt.image.length >= 4" class="row">
                             <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index" class="col-6 extra-img">
-                                <div class="card">
+                                <div class="card yes-img" data-bs-toggle="modal" data-bs-target="#modalImages">
                                     <div class="card-body">
                                         <img class="img-fluid" v-if="singleImg.src == null"
                                             v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.path" alt="">
@@ -126,7 +126,8 @@ export default {
                             <div class="col-12 d-flex">
                                 <div class="my-col extra-img">
                                     <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index"
-                                        class="card extra-img-card">
+                                        class="card extra-img-card yes-img" data-bs-toggle="modal"
+                                        data-bs-target="#modalImages">
                                         <div class="card-body">
                                             <img class="img-fluid" v-if="singleImg.src == null"
                                                 v-bind:src="'http://127.0.0.1:8000/storage/' + singleImg.path" alt="">
@@ -148,7 +149,8 @@ export default {
                         <div v-if="singleApt.image.length == 1">
                             <div class="col-12 d-flex">
                                 <div class="my-col extra-img">
-                                    <div class="card extra-img-card">
+                                    <div class="card extra-img-card yes-img" data-bs-toggle="modal"
+                                        data-bs-target="#modalImages">
                                         <div class="card-body">
                                             <img class="img-fluid" v-if="singleApt.image.src == null"
                                                 v-bind:src="'http://127.0.0.1:8000/storage/' + singleApt.image[0].path"
@@ -446,8 +448,15 @@ export default {
             object-fit: cover;
         }
     }
+}
 
+.yes-img:hover {
+    cursor: pointer;
+    filter: brightness(85%)
+}
 
+.big-img:hover {
+    filter: brightness(85%)
 }
 
 .loading-div {
