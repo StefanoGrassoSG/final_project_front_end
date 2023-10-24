@@ -81,8 +81,8 @@ export default {
       </div>
     </div>
 
-    <div class="container footer-bottom ">
-      <div class="col-12 col-md-6">
+    <div class="container footer-bottom">
+      <div class="col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start">
         <ul class="list-bottom list-bottom-sx">
           <li>Privacy</li>
           <li>
@@ -95,14 +95,17 @@ export default {
           </li>
         </ul>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end align-items-center">
         <ul class="list-bottom list-bottom-dx">
           <li>Italiano (IT)</li>
           <li>EUR &euro;</li>
-          <li>Social</li>
         </ul>
+        <div class="social-icon d-flex">
+          <img src="../assets/img/fb.png" alt="">
+          <img src="../assets/img/twitter_icon.png" alt="">
+          <img src="../assets/img/instagram_icon.png" alt="">
+        </div>
       </div>
-
     </div>
   </footer>
 </template>
@@ -145,7 +148,15 @@ footer {
       }
     }
   }
-
+  .footer-bottom {
+    .social-icon {
+      margin-left: 35px;
+      img{
+        width: 35px;
+        object-fit: cover;
+      }
+    }
+  }
   // FOOTER BOTTOM
 
   @media screen and (min-width: 200px) and (max-width: 768px) {
@@ -164,6 +175,7 @@ footer {
       .list-bottom-sx {
         display: flex;
         justify-content: center;
+        margin-bottom: 5px;
 
         li {
           margin-right: 0px;
@@ -171,10 +183,15 @@ footer {
       }
 
       li {
-        padding: 0px 10px;
+        padding: 0px 5px;
       }
-
     }
+
+    .footer-bottom {
+    .social-icon {
+      margin-left: 0px;
+    }
+  }
   }
 
   @media screen and (min-width: 770px) {
@@ -204,7 +221,7 @@ footer {
     flex-wrap: wrap;
     justify-content: space-between;
     border-top: 1px solid #00ABE8;
-    padding-top: 20px;
+    padding: 10px 0;
 
 
 
@@ -231,5 +248,6 @@ footer {
 ul {
   list-style: none !important;
   padding: 0;
+  margin-bottom: 0;
 }
 </style>
