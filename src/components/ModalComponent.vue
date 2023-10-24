@@ -36,9 +36,9 @@ export default {
                 }
             })
                 .then(res => {
-                    this.store.apartments = res.data.results
+                    this.store.apartments = res.data.results.data
                     this.store.totalApt = res.data.results.length
-                    console.log(res, this.store.totalApt, this.store.apartments)
+                    console.log('filter',res.data.results.data)
                 })
                 .catch(err => {
                     console.log(err)
