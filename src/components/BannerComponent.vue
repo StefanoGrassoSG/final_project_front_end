@@ -140,7 +140,7 @@ export default {
   }
   .logo-abs-1 {
     position: absolute;
-    top: 283px;
+    top: 233px;
     left: -42px;
     max-width: 207px;
     opacity: 0.3;

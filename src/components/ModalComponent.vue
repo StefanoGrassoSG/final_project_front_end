@@ -67,21 +67,21 @@ export default {
                             <div class="d-flex align-items-center">
                                 <div class="mb-4 col-12">
                                     <label for="exampleInputEmail1" class="form-label">N. letti</label>
-                                    <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
+                                    <input type="number" class="form-control" id="name" min="0" aria-describedby="emailHelp"
                                         v-model="data.numberOfBeds">
                                 </div>
                             </div>
                             <div class="d-flex align-items-center">
                                 <div class="mb-4 col-12">
                                     <label for="exampleInputEmail1" class="form-label">N. stanze</label>
-                                    <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
+                                    <input type="number" class="form-control" id="name" min="0" aria-describedby="emailHelp"
                                         v-model="data.numberOfRooms">
                                 </div>
                             </div>
                             <div class="d-flex align-items-center">
                                 <div class="mb-4 col-12">
                                     <label for="exampleInputEmail1" class="form-label">Prezzo</label>
-                                    <input type="number" class="form-control" id="name" aria-describedby="emailHelp"
+                                    <input type="number" class="form-control" min="0" id="name" aria-describedby="emailHelp"
                                         v-model="data.price">
                                 </div>
                             </div>
