@@ -26,16 +26,16 @@ export default {
 </script>
 
 <template>
-    <div class="card border rounded-4 card-Apt-grande">
+    <div class="card border rounded-4 card-Apt-grande w-100">
         <span v-if="arr.length > 0" class="badge-spons">
             <img src="../assets/img/coppa_grigia.png" alt="">
         </span>
-        <div class="img-fluid h-75 border rounded-4">
-            <img src="../assets/img/icon_img.png" alt="" v-if="!path" class="h-100 img-fluid">
-            <img :src="path" alt="" v-else-if="!path.startsWith('uploads')" class="h-100 img-fluid">
-            <img :src="'http://127.0.0.1:8000/storage/' + path" alt="" class="h-100 img-fluid" v-else>
+        <div class="img-fluid">
+            <img src="../assets/img/icon_img.png" alt="" v-if="!path" class="h-100 w-100 img-fluid">
+            <img :src="path" alt="" v-else-if="!path.startsWith('uploads')" class="h-100 w-100 img-fluid">
+            <img :src="'http://127.0.0.1:8000/storage/' + path" alt="" class="h-100 w-100 img-fluid" v-else>
         </div>
-        <div class="info-apt m-3">
+        <div class="info-apt m-3 d-flex flex-column align-items-center justify-content-between">
             <h4>
                 {{ name }}
             </h4>
@@ -68,6 +68,21 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.card {
+    .img-fluid {
+        height: 60%;
+
+    }
+
+    .info-apt {
+        height: 40%;
+    }
+
+    img {
+        object-fit: cover;
+    }
+}
+
 .card-Apt-grande {
     position: relative;
 

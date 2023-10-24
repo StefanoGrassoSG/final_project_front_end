@@ -413,12 +413,13 @@ export default {
                 height: 100%;
 
                 .col-6 {
-                    height: calc(500px / 2) !important;
+                    height: calc(498px / 2 - 4px) !important;
                 }
             }
 
             .card-body {
                 height: 100% !important;
+                margin: 0 2px;
 
                 .img-fluid {
                     height: 100% !important;
@@ -490,10 +491,10 @@ ul {
 }
 
 
-.extra-img:nth-child(3),
-.extra-img:nth-child(4) {
-    margin-top: 8px;
-}
+// .extra-img:nth-child(3),
+// .extra-img:nth-child(4) {
+//     margin-top: 8px;
+// }
 
 
 .extra-img-card {
