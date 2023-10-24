@@ -14,10 +14,10 @@ export default {
 <template>
   <footer class="text-center mt-5">
     <div class="container footer-top">
-      <div class="my-col col-12 col-sm-3 mb-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
-        <h4 class="list-title-footer">
+      <div class="my-col col-12 col-sm-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
+        <h5 class="list-title-footer">
           Assistenza
-        </h4>
+        </h5>
         <ul>
           <li>
             Centro Assistenza
@@ -32,10 +32,10 @@ export default {
       </div>
 
       <!-- COL-2 -->
-      <div class="my-col col-12 col-sm-3 mb-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
-        <h4 class="list-title-footer">
+      <div class="my-col col-12 col-sm-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
+        <h5 class="list-title-footer">
           Informazioni
-        </h4>
+        </h5>
         <ul>
           <li>
             Chi siamo
@@ -50,10 +50,10 @@ export default {
       </div>
 
       <!-- COL-3 -->
-      <div class="my-col col-12 col-sm-3 mb-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
-        <h4 class="list-title-footer">
+      <div class="my-col col-12 col-sm-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
+        <h5 class="list-title-footer">
           Le città più amate
-        </h4>
+        </h5>
         <ul>
           <li>
             Roma
@@ -71,7 +71,7 @@ export default {
       </div>
 
       <!-- COL-4 -->
-      <div class="my-col col-12 col-sm-3 mb-3  last-col">
+      <div class="my-col col-12 col-sm-3 last-col">
         <a href="#">
           <div class="img-container">
             <img src="../assets/img/jump-icon.png" alt="">
@@ -99,7 +99,7 @@ export default {
         <ul class="list-bottom list-bottom-dx">
           <li>Italiano (IT)</li>
           <li>EUR &euro;</li>
-          <li>Social</li>
+          <li></li>
         </ul>
       </div>
 
@@ -120,9 +120,23 @@ footer {
     margin-top: 50px;
     margin-bottom: 50px;
 
+
+
     .my-col {
       font-size: 17px;
       text-align: start;
+
+      ul {
+        li {
+          font-size: 1.1rem;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+
+      }
     }
 
     .last-col {
@@ -167,11 +181,8 @@ footer {
 
         li {
           margin-right: 0px;
+          padding: 0px 10px;
         }
-      }
-
-      li {
-        padding: 0px 10px;
       }
 
     }
