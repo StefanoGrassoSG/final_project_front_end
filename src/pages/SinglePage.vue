@@ -110,7 +110,7 @@ export default {
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-12 d-none d-md-block">
+                    <div class="col-md-6 col-12 d-none d-md-block col-img">
                         <div v-if="singleApt.image.length >= 4" class="row">
                             <div v-for=" singleImg  in  singleApt.image.slice(0, 4)" :key="index" class="col-6 extra-img">
                                 <div class="card">
@@ -402,6 +402,52 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.img-container {
+    .row {
+        max-height: 500px;
+
+        .col-img {
+            height: 100%;
+
+            .row {
+                height: 100%;
+
+                .col-6 {
+                    height: calc(500px / 2) !important;
+                }
+            }
+
+            .card-body {
+                height: 100% !important;
+
+                .img-fluid {
+                    height: 100% !important;
+                    width: 100% !important;
+                }
+            }
+
+
+
+        }
+    }
+
+
+}
+
+
+.card {
+    border: none !important;
+
+    .card-body {
+        img {
+            border-radius: 10px;
+            object-fit: cover;
+        }
+    }
+
+
+}
+
 .loading-div {
     margin: 0 auto;
     display: flex;
