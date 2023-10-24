@@ -170,6 +170,10 @@ footer {
       img {
         width: 35px;
         object-fit: cover;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -208,6 +212,10 @@ footer {
     .footer-bottom {
       .social-icon {
         margin-left: 0px;
+
+        img:hover {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -221,12 +229,20 @@ footer {
 
         li {
           margin-left: 50px;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
 
       .list-bottom-sx {
         li {
           margin-right: 50px;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
 
@@ -251,6 +267,10 @@ footer {
         display: inline-block;
         font-weight: bold;
         color: #888A8C;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       .boolbnb-li {
