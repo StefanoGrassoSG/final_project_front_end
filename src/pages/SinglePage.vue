@@ -325,7 +325,7 @@ export default {
                         <h3 class="text-center">
                             Host
                         </h3>
-
+                        <hr>
                         <div class="row ">
                             <div class="col-12 col-md-3 my-3">
                                 <div class="d-flex justify-content-center justify-md-start">
@@ -342,7 +342,7 @@ export default {
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-3 my-3 d-flex justify-content-center">
+                            <div class="col-12 col-md-4 my-3 d-flex justify-content-center">
                                 <div class="languages">
                                     <h4 class="text-center text-md-start host-info">
                                         Informazioni
@@ -363,7 +363,7 @@ export default {
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-3 my-3 d-flex justify-content-center justify-md-start">
+                            <div class="col-12 col-md-2 my-3 d-flex justify-content-center justify-md-start">
                                 <div class="languages">
                                     <h4 class="host-info">
                                         Lingue
@@ -381,7 +381,7 @@ export default {
                                     </ul>
                                 </div>
                             </div>
-                            <div class=" col-12 col-md-3 my-3 d-flex flex-column align-items-center align-items-md-start">
+                            <div class=" col-12 col-md-3 my-3 d-flex flex-column align-items-center align-items-md-center">
                                 <h4 class="host-info">
                                     Hai dubbi?
                                 </h4>
@@ -478,6 +478,7 @@ ul {
     li {
         list-style: none;
     }
+
 }
 
 .card {
@@ -592,9 +593,9 @@ ul {
 }
 
 .host-card {
-    border: 1px solid #3461AB;
     border-radius: 10px;
     padding-top: 10px;
+    background-color: #D2E6F8;
 
     .span-info {
         color: #888A8C;
