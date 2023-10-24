@@ -81,23 +81,23 @@ export default {
 
             <div class="card-body card-info-apt">
                 <div class="row">
-                    <div class="col-12 col-md">
-                        <h1>
+                    <div class="col-12 col-md d-flex align-items-center">
+                        <h1 class="my-0 me-3 d-inline-block">
                             {{ singleApt.name }}
                         </h1>
-                    </div>
-                    <div class="col-12 col-md d-flex justify-content-md-end">
-                        <button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn-contact btn-contact-top d-inline-block" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
                             Contatta l'host
                         </button>
                     </div>
+
                 </div>
             </div>
-            <section class="img-container my-5">
+            <section class="img-container my-3">
                 <div class="row">
                     <div class="col-md-6 col-12">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body py-2 px-0">
                                 <img class="img-fluid" v-bind:src="singleApt.cover_img" alt="">
                                 <img src="../assets/img/icon_img.png" alt="" v-if="!singleApt.cover_img"
                                     class="h-100 img-fluid">
@@ -288,8 +288,9 @@ export default {
                                 <h3>
                                     Servizi inclusi
                                 </h3>
+                                <hr>
                                 <ul>
-                                    <li class="fs-5 d-flex d-lg-inline mx-2" v-for=" singleService  in  singleApt.services "
+                                    <li class="d-flex d-lg-inline mx-2" v-for=" singleService  in  singleApt.services "
                                         :key="index">
                                         {{ singleService.name }}
                                     </li>
@@ -463,6 +464,7 @@ export default {
 h1 {
     color: #3461AB;
     font-weight: bold;
+    ;
 }
 
 h3 {
@@ -527,6 +529,10 @@ ul {
 }
 
 .apt-card-dx {
+    .card.title {
+        border-bottom: #00ABE8 !important;
+    }
+
     background-color: #D2E6F8;
 
     .span-info {
@@ -535,7 +541,7 @@ ul {
     }
 
     li {
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .card-info-apt {
@@ -555,12 +561,18 @@ ul {
         }
 
     }
+
+    // .services {
+    //     h3 {
+    //         border-bottom: 1px solid #00ABE8;
+    //     }
+    // }
 }
 
 
 
 .btn-contact {
-    padding: 10px;
+    padding: 7px;
     font-size: 13px;
     background-color: #00ABE8;
     color: white;
@@ -573,6 +585,10 @@ ul {
     background-color: #3461AB;
     color: white;
     font-weight: bold;
+}
+
+.btn-contact-top {
+    font-size: 10px;
 }
 
 .host-card {
