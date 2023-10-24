@@ -67,13 +67,17 @@ export default {
     <template v-if="!loading">
         <!-- Modal -->
         <div class="modal fade" id="modalImages" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered ">
+            <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content">
 
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" v-bind:src="singleApt.image[count].src" alt="First slide">
+                                <img class="d-block w-100" v-if="singleApt.image[count].src"
+                                    v-bind:src="singleApt.image[count].src" alt="First slide">
+                                <img class="d-block w-100" v-else
+                                    v-bind:src="'http://127.0.0.1:8000/storage/' + singleApt.image[count].path"
+                                    alt="First slide">
                             </div>
 
                         </div>
