@@ -71,6 +71,7 @@ export default {
 .card {
     .img-fluid {
         height: 60%;
+        min-height: 60%;
 
     }
 
