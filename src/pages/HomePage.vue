@@ -44,11 +44,14 @@ export default {
 	methods: {
 		handleResultsFound(event) {
 			var results = event.data.results;
+			console.log(results)
+			let lat=results.fuzzySearch.results[0].position.lat
+            let lon = results.fuzzySearch.results[0].position.lng
 			if (event.data.results.fuzzySearch.results.length === 0) {
 				this.getApt()
 			}
 			else {
-				this.search(results.autocomplete.context.inputQuery);
+				this.search(results.autocomplete.context.inputQuery, lat, lon);
 			}
 
 		},
@@ -69,10 +72,10 @@ export default {
 					this.aptLoading = false
 				})
 		},
-		search(param) {
+		search(param, lat, lon) {
 			this.aptLoading = true
 			let data = {
-				data: param
+				data: param, lat, lon
 			}
 			axios.post('http://127.0.0.1:8000/api/apartment', data, {
 				headers: {
@@ -159,6 +162,7 @@ export default {
 		<div ref="prova" @keyup.enter="search()" class="w-50 border-rounded-4">
 
 		</div>
+		<router-link  class="btn btn-primary">Cerca</router-link>
 
 		<div class="mt-3">
 			<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">

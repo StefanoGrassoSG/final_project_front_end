@@ -27,9 +27,7 @@ export default {
 
 <template>
     <div class="card border rounded-4 card-Apt-grande w-100">
-        <span v-if="arr.length > 0" class="badge-spons">
-            <img src="../assets/img/coppa_grigia.png" alt="">
-        </span>
+  
         <div class="img-fluid">
             <img src="../assets/img/icon_img.png" alt="" v-if="!path" class="h-100 w-100 img-fluid">
             <img :src="path" alt="" v-else-if="!path.startsWith('uploads')" class="h-100 w-100 img-fluid">
