@@ -38,7 +38,7 @@ export default {
                 .then(res => {
                     this.store.apartments = res.data.results.data
                     this.store.totalApt = res.data.results.length
-                    console.log('filter',res.data.results.data)
+                    console.log('filter', res.data.results.data)
                 })
                 .catch(err => {
                     console.log(err)
@@ -103,7 +103,7 @@ export default {
                 </div>
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                    <button type="button" @click="searchWithFilters" data-bs-dismiss="modal" class="btn btn-primary">
+                    <button type="button" @click="searchWithFilters" data-bs-dismiss="modal" class="btn-contact">
                         Cerca
                     </button>
                 </div>
@@ -117,6 +117,22 @@ export default {
 
 label:not(.check-services) {
     color: #3461AB;
+    font-weight: bold;
+}
+
+.btn-contact {
+    padding: 10px;
+    font-size: 13px;
+    background-color: #00ABE8;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px !important;
+    border: none !important;
+}
+
+.btn-contact:hover {
+    background-color: #3461AB;
+    color: white;
     font-weight: bold;
 }
 </style>
