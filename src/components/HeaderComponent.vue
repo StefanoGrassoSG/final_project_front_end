@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <header class="mb-5 shadow p-3 mb-5 bg-body-tertiary rounded">
+  <header class="mb-5 shadow p-3 mb-5 bg-body-tertiary">
     <div class="container-fluid">
       <div class="row px-4 align-items-center">
         <div class="col logo">
@@ -83,7 +83,7 @@ header {
     }
   }
 } 
- 
+
 }
 
 h1 {

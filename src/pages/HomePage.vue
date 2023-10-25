@@ -182,7 +182,7 @@ export default {
 					</div>
 				</template>
 				<template v-else>
-					<h3>
+					<h3 class="app-notfound">
 						Nessun appartamento trovato
 					</h3>
 				</template>
@@ -214,6 +214,11 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+.app-notfound {
+	margin-bottom: 2.5rem;
+	font-weight: bold;
+	color: #3461AB;
 }
 
 .btn-contact {
