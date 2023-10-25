@@ -46,11 +46,11 @@ export default {
 @use "../assets/scss/main";
 @import "../../node_modules/rfs/scss";
 
-h1 {
-  @include font-size(4rem);
-}
-
-.row {
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+    .row {
   .logo-complete {
     img {
       width: 150px;
@@ -82,7 +82,15 @@ h1 {
       }
     }
   }
+} 
+ 
 }
+
+h1 {
+  @include font-size(4rem);
+}
+
+
 
 //MEDIA-QUERY
 
