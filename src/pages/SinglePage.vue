@@ -272,7 +272,7 @@ export default {
                                         </div>
                                         <div class="col-12 col-sm-6 mb-3">
                                             <div class="icon-div">
-                                                <img src="../assets/img/bagni.png" alt="">
+                                                <img src="../assets/img/condivisione.png" alt="">
                                             </div>
                                             <span class="span-info">Bagno condiviso: </span>
                                             <span class="span-info" v-if="singleApt.shared_bathroom">Sì</span>
@@ -577,7 +577,7 @@ ul {
     }
 
     li {
-        font-size: 13px;
+        font-size: 16px;
     }
 
     .card-info-apt {
