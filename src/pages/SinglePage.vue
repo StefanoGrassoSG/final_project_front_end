@@ -95,16 +95,16 @@ export default {
             </div>
             <section class="img-container my-3">
                 <div class="row">
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-12 col-big-img">
                         <div class="card big-img">
-                            <div class="card-body py-2 px-0">
+                            <div class="card-body p-0">
                                 <img class="img-fluid" v-bind:src="singleApt.cover_img" alt="">
                                 <img src="../assets/img/icon_img.png" alt="" v-if="!singleApt.cover_img"
                                     class="h-100 img-fluid">
 
                                 <!-- <img :src="path" alt="" v-else-if="!path.startsWith('uploads')" class="h-100 img-fluid"> -->
                                 <img :src="'http://127.0.0.1:8000/storage/' + singleApt.cover_img" alt=""
-                                    class="h-100 img-fluid" v-else>
+                                    class="h-100 w-100 img-fluid" v-else>
 
                             </div>
                         </div>
@@ -228,7 +228,7 @@ export default {
                             </button>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-sm-12 descrizione-div">
 
                         <div class="me-4">
                             <h3>
@@ -237,6 +237,7 @@ export default {
                             <p class="fs-5 text-justify">
                                 {{ singleApt.description }}
                             </p>
+                            <img src="../assets/img/astro_rivisited.png" alt="">
                         </div>
                     </div>
                     <div class="apt-card-dx col-md-6 col-sm-12 border rounded-4 px-4 align-self-start">
@@ -409,8 +410,17 @@ export default {
     .row {
         max-height: 500px;
 
+        .col-big-img {
+            height: 500px;
+
+            .card-body {
+                height: 100%;
+                margin: 0 2px;
+            }
+        }
+
         .col-img {
-            height: 100%;
+            height: 500px;
 
             .row {
                 height: 100%;
@@ -427,6 +437,7 @@ export default {
                 .img-fluid {
                     height: 100% !important;
                     width: 100% !important;
+                    // object-position: center;
                 }
             }
 
@@ -437,6 +448,21 @@ export default {
 
 
 }
+
+.descrizione-div {
+    position: relative;
+
+    img {
+        position: absolute;
+        width: 200px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        opacity: 0.6;
+    }
+}
+
 
 
 .card {
