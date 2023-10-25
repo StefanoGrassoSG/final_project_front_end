@@ -14,7 +14,7 @@ export default {
 <template>
   <footer class="text-center mt-5">
     <div class="container footer-top">
-      <div class="my-col col-12 col-sm-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
+      <div class="my-col col-12 col-sm-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start my-2">
         <h5 class="list-title-footer">
           Assistenza
         </h5>
@@ -32,7 +32,7 @@ export default {
       </div>
 
       <!-- COL-2 -->
-      <div class="my-col col-12 col-sm-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
+      <div class="my-col col-12 col-sm-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start my-2">
         <h5 class="list-title-footer">
           Informazioni
         </h5>
@@ -50,7 +50,7 @@ export default {
       </div>
 
       <!-- COL-3 -->
-      <div class="my-col col-12 col-sm-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start">
+      <div class="my-col col-12 col-sm-3 d-flex d-sm-block flex-column align-items-center text-center text-sm-start my-2">
         <h5 class="list-title-footer">
           Le città più amate
         </h5>
@@ -71,7 +71,7 @@ export default {
       </div>
 
       <!-- COL-4 -->
-      <div class="my-col col-12 col-sm-3 last-col">
+      <div class="my-col col-12 col-sm-3 last-col my-2">
         <a href="#">
           <div class="img-container">
             <img src="../assets/img/jump-icon.png" alt="">
