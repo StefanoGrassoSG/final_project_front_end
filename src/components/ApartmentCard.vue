@@ -69,6 +69,8 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+    height: 500px;
+
     .img-fluid {
         height: 60%;
         min-height: 60%;
