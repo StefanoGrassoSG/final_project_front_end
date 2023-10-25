@@ -661,4 +661,12 @@ ul {
         height: 100%;
     }
 }
+
+
+@media screen and (min-width: 375px) and (max-width: 600px) {
+    .img-container .row .col-big-img {
+        height: auto;
+    }
+
+}
 </style>
