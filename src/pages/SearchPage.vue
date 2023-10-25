@@ -7,6 +7,7 @@ import LoadingComponent from '../components/LoadingComponent.vue';
 import ReviewsComponent from "../components/ReviewsComponent.vue";
 import CitationComponent from "../components/CitationComponent.vue";
 import ModalComponent from "../components/ModalComponent.vue";
+import MapComponent from "../components/Map.vue";
 
 
 export default {
@@ -47,30 +48,13 @@ export default {
 			console.log(results)
 			let lat=results.fuzzySearch.results[0].position.lat
             let lon = results.fuzzySearch.results[0].position.lng
-			this.store.lat = lat
-			this.store.lon = lon
-			this.store.city = results
 			if (event.data.results.fuzzySearch.results.length === 0) {
 				this.getApt()
 			}
+			else {
+				this.search(results.autocomplete.context.inputQuery, lat, lon);
+			}
 
-		},
-		getApt() {
-			this.aptLoading = true
-			axios.get('http://127.0.0.1:8000/api/apartment')
-				.then(res => {
-					this.store.apartments = res.data.results.data
-					this.currentPage = res.data.results.current_page
-					this.totalAptPages = res.data.results.last_page
-					this.store.totalApt = res.data.results.total
-					this.aptLoading = false
-					console.log(res)
-
-				})
-				.catch(err => {
-					console.log(err)
-					this.aptLoading = false
-				})
 		},
 		search(param, lat, lon) {
 			this.aptLoading = true
@@ -142,7 +126,9 @@ export default {
 		}
 	},
 	created() {
-		this.getApt();
+        if(this.store.city,this.store.lat,this.store.lon) {
+            this.search(this.store.city,this.store.lat,this.store.lon)
+        }
 	},
 	components: {
 		BannerComponent,
@@ -150,7 +136,8 @@ export default {
 		LoadingComponent,
 		ReviewsComponent,
 		CitationComponent,
-		ModalComponent
+		ModalComponent,
+		MapComponent
 	}
 }
 </script>
@@ -159,10 +146,10 @@ export default {
 	<BannerComponent />
 
 	<div class="search-bar-div">
-		<div ref="prova" class="w-50 border-rounded-4">
+		<div ref="prova" @keyup.enter="search()" class="w-50 border-rounded-4">
 
 		</div>
-		<router-link :to="{ name: 'search'}" class="btn btn-primary mt-3">Cerca</router-link>
+		<router-link :to="{ name: 'search'}" class="btn btn-primary">Cerca</router-link>
 
 		<div class="mt-3">
 			<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -171,41 +158,44 @@ export default {
 		</div>
 	</div>
 
+    <MapComponent />
 
-	<div class="container">
-		<div id="my-container" class="mt-5 d-flex justify-content-center flex-wrap align-content-stretch w-100">
-			<template v-if="aptLoading">
-				<LoadingComponent />
-			</template>
-			<template v-if="!aptLoading">
-				<template v-if="store.apartments.length > 0 || store.apartments.lenght != null">
-					<div class="col-12 col-md-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in store.apartments"
-						:key="i">
-						<ApartmentCard :arr="apt.sponsorships" :name="apt.name" :address="apt.address" :path="apt.cover_img"
-							:price="apt.price" :id="apt.id" :square_meter="apt.square_meter" />
-					</div>
-				</template>
-				<template v-else>
-					<h3 class="app-notfound">
-						Nessun appartamento trovato
-					</h3>
-				</template>
-				<div v-if="store.apartments.length > 0 || store.apartments.length != null"
-					class="col-12 d-flex justify-content-center">
-					<button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
-						&lt prev
-					</button>
-					<button :disabled="currentPage == totalAptPages || store.apartments.length == store.totalApt"
-						@click="nextPage" class="btn-contact-opp ms-3">
-						next &gt
-					</button>
-				</div>
+	<template v-if="store.apartments != null">
+        <div class="container">
+            <div id="my-container" class="mt-5 d-flex justify-content-center flex-wrap align-content-stretch w-100">
+                <template v-if="aptLoading">
+                    <LoadingComponent />
+                </template>
+                <template v-if="!aptLoading">
+                    <template v-if="store.apartments.length > 0 || store.apartments.lenght != null">
+                        <div class="col-12 col-md-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in store.apartments"
+                            :key="i">
+                            <ApartmentCard :arr="apt.sponsorships" :name="apt.name" :address="apt.address" :path="apt.cover_img"
+                                :price="apt.price" :id="apt.id" :square_meter="apt.square_meter" />
+                        </div>
+                    </template>
+                    <template v-else>
+                        <h3>
+                            Nessun appartamento trovato
+                        </h3>
+                    </template>
+                    
+                    <div v-if="store.apartments.length > 0 || store.apartments.length != null"
+                        class="col-12 d-flex justify-content-center">
+                        <button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
+                            &lt prev
+                        </button>
+                        <button :disabled="currentPage == totalAptPages || store.apartments.length == store.totalApt"
+                            @click="nextPage" class="btn-contact-opp ms-3">
+                            next &gt
+                        </button>
+                    </div>
 
-			</template>
-		</div>
+                </template>
+            </div>
+	    </div>
+    </template>
 
-
-	</div>
 	<ModalComponent />
 	<ReviewsComponent />
 
@@ -213,16 +203,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
 .search-bar-div {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-}
-.app-notfound {
-	margin-bottom: 2.5rem;
-	font-weight: bold;
-	color: #3461AB;
 }
 
 .btn-contact {

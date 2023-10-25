@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import HomePage from './pages/HomePage.vue';
 import SinglePage from './pages/SinglePage.vue'
+import SearchPage from './pages/SearchPage.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -28,6 +29,11 @@ const router = createRouter({
             path: '/singleApt/:id',
             name: 'singleApt',
             component: SinglePage
+        },
+        {
+            path: '/search',
+            name: 'search',
+            component: SearchPage
         },
     ]
 });
