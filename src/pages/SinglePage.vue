@@ -237,7 +237,7 @@ export default {
                             <p class="fs-5 text-justify">
                                 {{ singleApt.description }}
                             </p>
-                            <img src="../assets/img/astro_rivisited.png" alt="">
+                            <img src="../assets/img/astroboy2.png" alt="">
                         </div>
                     </div>
                     <div class="apt-card-dx col-md-6 col-sm-12 border rounded-4 px-4 align-self-start">

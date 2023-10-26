@@ -162,7 +162,7 @@ export default {
 		<div ref="prova" class="w-50 border-rounded-4">
 
 		</div>
-		<div class="mt-3">
+		<div class="mt-5">
 			<span class="search-link">
 				<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
 			</span>

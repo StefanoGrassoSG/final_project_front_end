@@ -1,13 +1,14 @@
 <script>
 import { store } from "../store";
 import axios from "axios";
-import BannerComponent from '../components/BannerComponent.vue';
+import BannerSearchComponent from '../components/BannerSearchComponent.vue';
 import ApartmentCard from '../components/ApartmentCard.vue';
 import LoadingComponent from '../components/LoadingComponent.vue';
 import ReviewsComponent from "../components/ReviewsComponent.vue";
 import CitationComponent from "../components/CitationComponent.vue";
 import ModalComponent from "../components/ModalComponent.vue";
 import MapComponent from "../components/Map.vue";
+
 
 
 export default {
@@ -131,7 +132,7 @@ export default {
 		}
 	},
 	components: {
-		BannerComponent,
+		BannerSearchComponent,
 		ApartmentCard,
 		LoadingComponent,
 		ReviewsComponent,
@@ -143,19 +144,19 @@ export default {
 </script>
 
 <template>
-	<BannerComponent />
+	<BannerSearchComponent />
 
 	<div class="search-bar-div">
 		<div ref="prova" @keyup.enter="search()" class="w-50 border-rounded-4">
 
 		</div>
-		<div class="mt-3">
+		<div class="mt-4">
 			<span class="search-link">
 				<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
 			</span>
 			<span class="mx-3">
 				<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
-					Ricerca Avanzata
+					Filtri
 				</button>
 			</span>
 
@@ -166,8 +167,6 @@ export default {
 
 		</div>
 	</div>
-
-	<MapComponent />
 
 	<template v-if="store.apartments != null">
 		<div class="container">
@@ -190,7 +189,7 @@ export default {
 					</template>
 
 					<div v-if="store.apartments.length > 0 || store.apartments.length != null"
-						class="col-12 d-flex justify-content-center">
+						class="col-12 d-flex justify-content-center mb-5">
 						<button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
 							&lt prev
 						</button>
@@ -204,7 +203,7 @@ export default {
 			</div>
 		</div>
 	</template>
-
+	<MapComponent />
 	<ModalComponent />
 	<ReviewsComponent />
 
