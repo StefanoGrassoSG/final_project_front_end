@@ -5,21 +5,17 @@ import { store } from '../store';
 export default {
     name: 'MapSingle',
 
-    props: {
-        apartemnt: {
-            type: Object,
-            required: true
-        },
-    },
-
     data() {
         return {
             store,
         };
     },
-
+    watch: {
+        'store.lon': 'updateMap',
+        'store.lat': 'updateMap',
+        'store.apartments': 'updateMap',
+        },
     methods: {
-
         getSignleMap() {
             let map = null;
 
@@ -36,14 +32,23 @@ export default {
                 new tt.Marker().setLngLat([this.store.apartments[index].lon, this.store.apartments[index].lat]).addTo(map);
             }
 
+            
             map.addControl(new tt.NavigationControl());
 
             return map;
         },
+        updateMap() {
+            if (this.map) {
+            this.map.remove();
+            }
+
+            this.map = this.getSignleMap();
+  },
     },
 
     mounted() {
         this.getSignleMap();
+        console.log('CICCIOOOOOO');
     },
 }
 </script>

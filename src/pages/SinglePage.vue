@@ -5,6 +5,7 @@ import ModalComponentImages from "../components/ModalComponentImages.vue";
 import LoadingComponent from '../components/LoadingComponent.vue';
 
 
+
 export default {
     data() {
         return {
@@ -63,7 +64,6 @@ export default {
         ModalComponentMessage,
         LoadingComponent,
         ModalComponentImages
-
     }
 }
 </script>
