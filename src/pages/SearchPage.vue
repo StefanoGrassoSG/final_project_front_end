@@ -56,11 +56,15 @@ export default {
 			}
 
 		},
-		search(param, lat, lon) {
+		search(city, lat, lon, radius) {
 			this.aptLoading = true
 			let data = {
-				data: param, lat, lon
+				city:this.store.city,
+				lat: this.store.lat,
+				lon: this.store.lon,
+				radius: this.store.range
 			}
+			console.log(data, 'BELLAAAAAA')
 			axios.post('http://127.0.0.1:8000/api/apartment', data, {
 				headers: {
 					'Content-Type': 'multipart/form-data'
@@ -68,6 +72,30 @@ export default {
 			})
 				.then(res => {
 					console.log(res)
+					this.store.apartments = res.data.results.data
+					this.totalAptPages = res.data.results.last_page
+					this.aptLoading = false
+					this.store.totalApt = res.data.results.total
+				})
+				.catch(err => {
+					console.log(err)
+				})
+		},
+		editRadius() {
+			this.aptLoading = true
+			let data = {
+				lat: this.store.lat,
+				lon: this.store.lon,
+				radius: this.store.range
+			}
+			axios.post('http://127.0.0.1:8000/api/apartment', data, {
+				headers: {
+					'Content-Type': 'multipart/form-data'
+				}
+			})
+				.then(res => {
+					console.log(this.store.radius, 'E ANCHE QUAAAA')
+					console.log(res, 'GUARDA QUA')
 					this.store.apartments = res.data.results.data
 					this.totalAptPages = res.data.results.last_page
 					this.aptLoading = false
@@ -126,8 +154,8 @@ export default {
 		}
 	},
 	created() {
-		if (this.store.city, this.store.lat, this.store.lon) {
-			this.search(this.store.city, this.store.lat, this.store.lon)
+		if (this.store.city, this.store.lat, this.store.lon, this.store.range) {
+			this.search(this.store.city, this.store.lat, this.store.lon, this.store.range)
 		}
 	},
 	components: {
@@ -158,12 +186,14 @@ export default {
 					Ricerca Avanzata
 				</button>
 			</span>
-
 		</div>
 
 
-		<div class="mt-3">
-
+		<div class="mt-3 d-flex">
+			<label for="customRange1" class="form-label">Raggio in Km</label>
+			<input type="range" class="form-range" id="customRange1" step="5" min="20" max="100" v-model="store.range">
+			<button @click="editRadius()" class="btn btn-primary">Search</button>
+			{{ store.range }}
 		</div>
 	</div>
 

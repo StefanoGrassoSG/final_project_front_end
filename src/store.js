@@ -5,5 +5,6 @@ export const store = reactive({
     totalApt: 0,
     lat: null,
     lon: null,
-    city: null
+    city: null,
+    range: 20
 })
