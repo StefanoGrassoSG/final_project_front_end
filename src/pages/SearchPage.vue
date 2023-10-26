@@ -227,7 +227,10 @@ export default {
 			</div>
 		</div>
 	</template>
-	<MapComponent />
+	<template v-if="!aptLoading">
+		<MapComponent />
+	</template>
+	
 	<ModalComponent />
 	<ReviewsComponent />
 
