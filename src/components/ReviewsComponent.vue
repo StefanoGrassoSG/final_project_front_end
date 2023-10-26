@@ -25,7 +25,7 @@ export default {
 @use "../assets/scss/main";
 
 .review-container {
-    margin-top: 40px;
+    margin-top: 80px;
     padding: 2.25rem;
     background-image: url(../assets/img/reviews-img.png);
     background-size: cover;
@@ -55,7 +55,7 @@ export default {
     position: absolute;
     top: -74px;
     right: 200px;
-    z-index: -1;
+    z-index: -3;
 }
 
 .circle-graph-2 {
