@@ -46,8 +46,8 @@ export default {
 		handleResultsFound(event) {
 			var results = event.data.results;
 			console.log(results)
-			let lat=results.fuzzySearch.results[0].position.lat
-            let lon = results.fuzzySearch.results[0].position.lng
+			let lat = results.fuzzySearch.results[0].position.lat
+			let lon = results.fuzzySearch.results[0].position.lng
 			if (event.data.results.fuzzySearch.results.length === 0) {
 				this.getApt()
 			}
@@ -126,9 +126,9 @@ export default {
 		}
 	},
 	created() {
-        if(this.store.city,this.store.lat,this.store.lon) {
-            this.search(this.store.city,this.store.lat,this.store.lon)
-        }
+		if (this.store.city, this.store.lat, this.store.lon) {
+			this.search(this.store.city, this.store.lat, this.store.lon)
+		}
 	},
 	components: {
 		BannerComponent,
@@ -149,52 +149,61 @@ export default {
 		<div ref="prova" @keyup.enter="search()" class="w-50 border-rounded-4">
 
 		</div>
-		<router-link :to="{ name: 'search'}" class="btn btn-primary">Cerca</router-link>
+		<div class="mt-3">
+			<span class="search-link">
+				<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
+			</span>
+			<span class="mx-3">
+				<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					Ricerca Avanzata
+				</button>
+			</span>
+
+		</div>
+
 
 		<div class="mt-3">
-			<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
-				Ricerca Avanzata
-			</button>
+
 		</div>
 	</div>
 
-    <MapComponent />
+	<MapComponent />
 
 	<template v-if="store.apartments != null">
-        <div class="container">
-            <div id="my-container" class="mt-5 d-flex justify-content-center flex-wrap align-content-stretch w-100">
-                <template v-if="aptLoading">
-                    <LoadingComponent />
-                </template>
-                <template v-if="!aptLoading">
-                    <template v-if="store.apartments.length > 0 || store.apartments.lenght != null">
-                        <div class="col-12 col-md-4 my-3 px-2 d-flex align-content-stretch" v-for="(apt, i) in store.apartments"
-                            :key="i">
-                            <ApartmentCard :arr="apt.sponsorships" :name="apt.name" :address="apt.address" :path="apt.cover_img"
-                                :price="apt.price" :id="apt.id" :square_meter="apt.square_meter" />
-                        </div>
-                    </template>
-                    <template v-else>
-                        <h3>
-                            Nessun appartamento trovato
-                        </h3>
-                    </template>
-                    
-                    <div v-if="store.apartments.length > 0 || store.apartments.length != null"
-                        class="col-12 d-flex justify-content-center">
-                        <button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
-                            &lt prev
-                        </button>
-                        <button :disabled="currentPage == totalAptPages || store.apartments.length == store.totalApt"
-                            @click="nextPage" class="btn-contact-opp ms-3">
-                            next &gt
-                        </button>
-                    </div>
+		<div class="container">
+			<div id="my-container" class="mt-5 d-flex justify-content-center flex-wrap align-content-stretch w-100">
+				<template v-if="aptLoading">
+					<LoadingComponent />
+				</template>
+				<template v-if="!aptLoading">
+					<template v-if="store.apartments.length > 0 || store.apartments.lenght != null">
+						<div class="col-12 col-md-4 my-3 px-2 d-flex align-content-stretch"
+							v-for="(apt, i) in store.apartments" :key="i">
+							<ApartmentCard :arr="apt.sponsorships" :name="apt.name" :address="apt.address"
+								:path="apt.cover_img" :price="apt.price" :id="apt.id" :square_meter="apt.square_meter" />
+						</div>
+					</template>
+					<template v-else>
+						<h3>
+							Nessun appartamento trovato
+						</h3>
+					</template>
 
-                </template>
-            </div>
-	    </div>
-    </template>
+					<div v-if="store.apartments.length > 0 || store.apartments.length != null"
+						class="col-12 d-flex justify-content-center">
+						<button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
+							&lt prev
+						</button>
+						<button :disabled="currentPage == totalAptPages || store.apartments.length == store.totalApt"
+							@click="nextPage" class="btn-contact-opp ms-3">
+							next &gt
+						</button>
+					</div>
+
+				</template>
+			</div>
+		</div>
+	</template>
 
 	<ModalComponent />
 	<ReviewsComponent />
@@ -203,6 +212,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.search-link {
+	* {
+		text-decoration: none;
+	}
+}
 
 .search-bar-div {
 	display: flex;

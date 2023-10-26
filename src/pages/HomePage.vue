@@ -163,7 +163,10 @@ export default {
 
 		</div>
 		<div class="mt-3">
-			<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
+			<span class="search-link">
+				<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
+			</span>
+
 		</div>
 
 
@@ -216,6 +219,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.search-link {
+	* {
+		text-decoration: none;
+	}
+}
+
 .search-bar-div {
 	display: flex;
 	flex-direction: column;
