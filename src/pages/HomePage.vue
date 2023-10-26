@@ -155,13 +155,19 @@ export default {
 		<div ref="prova" class="w-50 border-rounded-4">
 
 		</div>
-		<router-link :to="{ name: 'search'}" class="btn btn-primary mt-3">Cerca</router-link>
-
 		<div class="mt-3">
+			<span class="search-link">
+				<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
+			</span>
+
+		</div>
+
+
+		<!-- <div class="mt-3">
 			<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
 				Ricerca Avanzata
 			</button>
-		</div>
+		</div> -->
 	</div>
 
 
@@ -206,12 +212,19 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.search-link {
+	* {
+		text-decoration: none;
+	}
+}
+
 .search-bar-div {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
+
 .app-notfound {
 	margin-bottom: 2.5rem;
 	font-weight: bold;
