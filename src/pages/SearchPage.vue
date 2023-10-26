@@ -50,8 +50,6 @@ export default {
 			let lat=results.fuzzySearch.results[0].position.lat
             let lon = results.fuzzySearch.results[0].position.lng
 			console.log(results)
-			let lat = results.fuzzySearch.results[0].position.lat
-			let lon = results.fuzzySearch.results[0].position.lng
 			if (event.data.results.fuzzySearch.results.length === 0) {
 				this.getApt()
 			}
