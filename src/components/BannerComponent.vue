@@ -142,7 +142,7 @@ export default {
 
   .logo-abs-1 {
     position: absolute;
-    top: 170px;
+    top: 170px !important;
     left: -42px;
     max-width: 207px;
     opacity: 0.3;
@@ -201,4 +201,5 @@ export default {
       margin-bottom: 0.8rem !important;
     }
   }
-}</style>
+}
+</style>
