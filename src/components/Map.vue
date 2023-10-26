@@ -62,10 +62,10 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
 .container {
     position: relative;
 }
+
 .map {
     width: 100%;
     height: 500px;
@@ -76,12 +76,13 @@ export default {
 }
 
 .div-img-fly {
-    img{
-    z-index: 0;
-    position: absolute;
-    width: 110%;
-    left: -78px;
-    object-fit: cover;
+    img {
+        z-index: 0;
+        position: absolute;
+        width: 110%;
+        top: 40px;
+        left: -78px;
+        object-fit: cover;
     }
 }
 </style>

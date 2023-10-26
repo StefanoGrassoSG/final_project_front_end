@@ -109,7 +109,7 @@ export default {
 }
 
 .btn-contact {
-    padding: 5px;
+    padding: 5px 7px;
     font-size: 13px;
     background-color: #00ABE8;
     color: white;
