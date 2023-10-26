@@ -48,8 +48,8 @@ export default {
 		handleResultsFound(event) {
 			var results = event.data.results;
 			// console.log(results)
-			let lat=results.fuzzySearch.results[0].position.lat
-            let lon = results.fuzzySearch.results[0].position.lng
+			let lat = results.fuzzySearch.results[0].position.lat
+			let lon = results.fuzzySearch.results[0].position.lng
 			console.log(results)
 			if (event.data.results.fuzzySearch.results.length === 0) {
 				this.getApt()
@@ -62,7 +62,7 @@ export default {
 		search(city, lat, lon, radius) {
 			this.aptLoading = true
 			let data = {
-				city:this.store.city,
+				city: this.store.city,
 				lat: this.store.lat,
 				lon: this.store.lon,
 				radius: this.store.range
@@ -184,10 +184,10 @@ export default {
 		</div>
 
 
-		<div class="mt-3 d-flex">
-			<label for="customRange1" class="form-label">Raggio in Km</label>
+		<div class="mt-3 d-flex align-items-center">
+			<label for="customRange1" class="form-label mx-3">Raggio in Km</label>
 			<input type="range" class="form-range" id="customRange1" step="5" min="20" max="100" v-model="store.range">
-			<button @click="editRadius()" class="btn btn-primary">Search</button>
+			<button @click="editRadius()" class="btn-contact mx-3">Search</button>
 			{{ store.range }}
 		</div>
 	</div>
@@ -230,7 +230,7 @@ export default {
 	<template v-if="!aptLoading">
 		<MapComponent />
 	</template>
-	
+
 	<ModalComponent />
 	<ReviewsComponent />
 
