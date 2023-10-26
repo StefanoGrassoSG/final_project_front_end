@@ -149,6 +149,7 @@ export default {
 		}
 	},
 	created() {
+		console.log(this.store, 'QUIIIIIIIIIIII')
 		if (this.store.city, this.store.lat, this.store.lon, this.store.range) {
 			this.search(this.store.city, this.store.lat, this.store.lon, this.store.range)
 		}
@@ -229,9 +230,10 @@ export default {
 	</template>
 	<template v-if="!aptLoading">
 		<MapComponent />
+		<ModalComponent />
 	</template>
 
-	<ModalComponent />
+	
 	<ReviewsComponent />
 
 	<CitationComponent />

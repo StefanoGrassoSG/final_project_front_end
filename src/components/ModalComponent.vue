@@ -4,14 +4,17 @@ import axios from "axios";
 export default {
     data() {
         return {
+            store,
             data: {
                 numberOfBeds: null,
                 numberOfRooms: null,
                 price: null,
-                selectedServices: []
+                selectedServices: [],
+                lat: store.lat,
+                lon: store.lon,
+                radius: store.range
             },
             services: [],
-            store
         }
     },
     methods: {
@@ -38,6 +41,7 @@ export default {
                     this.store.apartments = res.data.results.data
                     this.store.totalApt = res.data.results.length
                     console.log('filter', res.data.results.data)
+                    console.log(this.store, 'ciaooooooooooooooooooo')
                 })
                 .catch(err => {
                     console.log(err)

@@ -6,7 +6,6 @@ import ApartmentCard from '../components/ApartmentCard.vue';
 import LoadingComponent from '../components/LoadingComponent.vue';
 import ReviewsComponent from "../components/ReviewsComponent.vue";
 import CitationComponent from "../components/CitationComponent.vue";
-import ModalComponent from "../components/ModalComponent.vue";
 
 
 export default {
@@ -142,8 +141,7 @@ export default {
 		ApartmentCard,
 		LoadingComponent,
 		ReviewsComponent,
-		CitationComponent,
-		ModalComponent
+		CitationComponent
 	}
 }
 </script>
@@ -161,13 +159,6 @@ export default {
 			</span>
 
 		</div>
-
-
-		<!-- <div class="mt-3">
-			<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
-				Ricerca Avanzata
-			</button>
-		</div> -->
 	</div>
 
 
@@ -205,7 +196,7 @@ export default {
 
 
 	</div>
-	<ModalComponent />
+	
 	<ReviewsComponent />
 
 	<CitationComponent />

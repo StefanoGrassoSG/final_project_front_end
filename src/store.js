@@ -7,5 +7,7 @@ export const store = reactive({
     lon: null,
     city: null,
     range: 20,
-    inputSearchBar: ''
+    inputSearchBar: '',
+    mapFlag : false,
+    filterApt: null
 })
