@@ -12,42 +12,43 @@ export default {
 </script>
 
 <template>
-  <section class="mb-5 text-center jumbo-section align-items-baseline overflow-hidden">
+  <section class=" text-center jumbo-section align-items-baseline overflow-hidden">
     <div class="container">
       <div class="row align-items-baseline">
         <div class="col-12 col-md-4  d-flex flex-column align-items-center text-center mountain-img">
           <div class="div-img">
-            <img src="../assets/img/montain.png" alt="">
+            <img src="../assets/img/mountain2_banner2.png" alt="" class="mt-5">
           </div>
-          <h2>
+          <!-- <h2>
             <span>b</span>-mountain
-          </h2>
+          </h2> -->
         </div>
         <div class="col-12 col-md-4 d-flex flex-column align-items-center text-center see-img my-4">
           <div class="div-img">
-            <img src="../assets/img/see.png" alt="">
+            <img src="../assets/img/see2_banner2.png" alt="">
           </div>
-          <h2>
+          <!-- <h2>
             <span>b</span>-sea
-          </h2>
+          </h2> -->
         </div>
         <div class="col-12 col-md-4 d-flex flex-column align-items-center text-center city-img">
           <div class="div-img">
-            <img src="../assets/img/city.png" alt="">
+            <img src="../assets/img/city2_banner2.png" alt="">
           </div>
-          <h2>
+          <!-- <h2>
             <span>b</span>-city
-          </h2>
+          </h2> -->
         </div>
       </div>
     </div>
-    <h1 class="my-5 title-jumbo">
-      <span>b</span>-everywhere with <span>boolbnb</span>
+    <h1 class="mt-5 title-jumbo">
+      <!-- <span>b</span>-everywhere with <span>boolbnb</span> -->
+      <span>I tuoi risultati</span>
     </h1>
-    <div class="logo-back d-none d-lg-block">
+    <!-- <div class="logo-back d-none d-lg-block">
       <img src="../assets/img/logo_huge.png" alt="" class="logo-abs-1">
       <img src="../assets/img/logo_huge.png" alt="" class="logo-abs-2">
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -63,7 +64,6 @@ export default {
 
       img {
         width: 100%;
-        height: 100%;
       }
     }
 
@@ -142,7 +142,7 @@ export default {
 
   .logo-abs-1 {
     position: absolute;
-    top: 170px !important;
+    top: 170px;
     left: -42px;
     max-width: 207px;
     opacity: 0.3;

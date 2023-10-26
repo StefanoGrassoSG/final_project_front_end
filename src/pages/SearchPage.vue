@@ -1,13 +1,14 @@
 <script>
 import { store } from "../store";
 import axios from "axios";
-import BannerComponent from '../components/BannerComponent.vue';
+import BannerSearchComponent from '../components/BannerSearchComponent.vue';
 import ApartmentCard from '../components/ApartmentCard.vue';
 import LoadingComponent from '../components/LoadingComponent.vue';
 import ReviewsComponent from "../components/ReviewsComponent.vue";
 import CitationComponent from "../components/CitationComponent.vue";
 import ModalComponent from "../components/ModalComponent.vue";
 import MapComponent from "../components/Map.vue";
+
 
 
 export default {
@@ -38,16 +39,18 @@ export default {
 		var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
 		let prova = this.$refs.prova;
 		prova.appendChild(searchBoxHTML);
-
+		let x = document.getElementsByClassName("tt-search-box-input");
+		x[0].setAttribute("value", `${this.store.inputSearchBar}`);
 		ttSearchBox.on("tomtom.searchbox.resultsfound", this.handleResultsFound)
 
 	},
 	methods: {
 		handleResultsFound(event) {
 			var results = event.data.results;
+			// console.log(results)
+			let lat=results.fuzzySearch.results[0].position.lat
+            let lon = results.fuzzySearch.results[0].position.lng
 			console.log(results)
-			let lat = results.fuzzySearch.results[0].position.lat
-			let lon = results.fuzzySearch.results[0].position.lng
 			if (event.data.results.fuzzySearch.results.length === 0) {
 				this.getApt()
 			}
@@ -107,11 +110,7 @@ export default {
 		},
 		nextPage() {
 			if (this.nextPageCounter < this.totalAptPages) {
-
-				console.log(this.nextPageCounter)
 				this.nextPageCounter++
-
-				console.log(this.nextPageCounter)
 			}
 			else {
 				this.nextPageCounter = 1
@@ -119,7 +118,6 @@ export default {
 			this.aptLoading = true
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 				.then(res => {
-					console.log(res.data.results)
 					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
@@ -132,9 +130,7 @@ export default {
 		,
 		prevPage() {
 			if (this.nextPageCounter > 1) {
-				console.log(this.nextPageCounter)
 				this.nextPageCounter--
-				console.log(this.nextPageCounter)
 			}
 			else {
 				this.nextPageCounter = this.totalAptPages
@@ -142,7 +138,6 @@ export default {
 			this.aptLoading = true
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 				.then(res => {
-					console.log(res.data.results)
 					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
@@ -159,7 +154,7 @@ export default {
 		}
 	},
 	components: {
-		BannerComponent,
+		BannerSearchComponent,
 		ApartmentCard,
 		LoadingComponent,
 		ReviewsComponent,
@@ -171,19 +166,19 @@ export default {
 </script>
 
 <template>
-	<BannerComponent />
+	<BannerSearchComponent />
 
 	<div class="search-bar-div">
 		<div ref="prova" @keyup.enter="search()" class="w-50 border-rounded-4">
 
 		</div>
-		<div class="mt-3">
+		<div class="mt-4">
 			<span class="search-link">
 				<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
 			</span>
 			<span class="mx-3">
 				<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
-					Ricerca Avanzata
+					Filtri
 				</button>
 			</span>
 		</div>
@@ -196,8 +191,6 @@ export default {
 			{{ store.range }}
 		</div>
 	</div>
-
-	<MapComponent />
 
 	<template v-if="store.apartments != null">
 		<div class="container">
@@ -220,7 +213,7 @@ export default {
 					</template>
 
 					<div v-if="store.apartments.length > 0 || store.apartments.length != null"
-						class="col-12 d-flex justify-content-center">
+						class="col-12 d-flex justify-content-center mb-5">
 						<button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
 							&lt prev
 						</button>
@@ -234,7 +227,7 @@ export default {
 			</div>
 		</div>
 	</template>
-
+	<MapComponent />
 	<ModalComponent />
 	<ReviewsComponent />
 

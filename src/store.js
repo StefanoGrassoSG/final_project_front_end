@@ -6,5 +6,6 @@ export const store = reactive({
     lat: null,
     lon: null,
     city: null,
-    range: 20
+    range: 20,
+    inputSearchBar: ''
 })

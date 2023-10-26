@@ -37,16 +37,15 @@ export default {
 		var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
 		let prova = this.$refs.prova;
 		prova.appendChild(searchBoxHTML);
-
 		ttSearchBox.on("tomtom.searchbox.resultsfound", this.handleResultsFound)
 
 	},
 	methods: {
 		handleResultsFound(event) {
 			var results = event.data.results;
-			console.log(results)
-			let lat = results.fuzzySearch.results[0].position.lat
-			let lon = results.fuzzySearch.results[0].position.lng
+			this.store.inputSearchBar = results.autocomplete.context.inputQuery
+			let lat=results.fuzzySearch.results[0].position.lat
+            let lon = results.fuzzySearch.results[0].position.lng
 			this.store.lat = lat
 			this.store.lon = lon
 			this.store.city = results
@@ -64,7 +63,7 @@ export default {
 					this.totalAptPages = res.data.results.last_page
 					this.store.totalApt = res.data.results.total
 					this.aptLoading = false
-					console.log(res)
+					// console.log(res)
 
 				})
 				.catch(err => {
@@ -83,7 +82,7 @@ export default {
 				}
 			})
 				.then(res => {
-					console.log(res)
+					// console.log(res)
 					this.store.apartments = res.data.results.data
 					this.totalAptPages = res.data.results.last_page
 					this.aptLoading = false
@@ -95,11 +94,7 @@ export default {
 		},
 		nextPage() {
 			if (this.nextPageCounter < this.totalAptPages) {
-
-				console.log(this.nextPageCounter)
 				this.nextPageCounter++
-
-				console.log(this.nextPageCounter)
 			}
 			else {
 				this.nextPageCounter = 1
@@ -107,7 +102,7 @@ export default {
 			this.aptLoading = true
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 				.then(res => {
-					console.log(res.data.results)
+					// console.log(res.data.results)
 					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
@@ -120,9 +115,7 @@ export default {
 		,
 		prevPage() {
 			if (this.nextPageCounter > 1) {
-				console.log(this.nextPageCounter)
 				this.nextPageCounter--
-				console.log(this.nextPageCounter)
 			}
 			else {
 				this.nextPageCounter = this.totalAptPages
@@ -130,7 +123,7 @@ export default {
 			this.aptLoading = true
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 				.then(res => {
-					console.log(res.data.results)
+					// console.log(res.data.results)
 					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
@@ -162,7 +155,7 @@ export default {
 		<div ref="prova" class="w-50 border-rounded-4">
 
 		</div>
-		<div class="mt-3">
+		<div class="mt-5">
 			<span class="search-link">
 				<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
 			</span>

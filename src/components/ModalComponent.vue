@@ -21,7 +21,6 @@ export default {
                 .get("http://127.0.0.1:8000/api/service")
                 .then((res) => {
                     this.services = res.data.data;
-                    console.log(this.services);
                 })
                 .catch((err) => {
                     console.log(err);
