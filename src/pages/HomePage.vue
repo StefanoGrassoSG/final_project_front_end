@@ -45,8 +45,8 @@ export default {
 		handleResultsFound(event) {
 			var results = event.data.results;
 			console.log(results)
-			let lat=results.fuzzySearch.results[0].position.lat
-            let lon = results.fuzzySearch.results[0].position.lng
+			let lat = results.fuzzySearch.results[0].position.lat
+			let lon = results.fuzzySearch.results[0].position.lng
 			this.store.lat = lat
 			this.store.lon = lon
 			this.store.city = results
@@ -162,13 +162,16 @@ export default {
 		<div ref="prova" class="w-50 border-rounded-4">
 
 		</div>
-		<router-link :to="{ name: 'search'}" class="btn btn-primary mt-3">Cerca</router-link>
-
 		<div class="mt-3">
+			<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
+		</div>
+
+
+		<!-- <div class="mt-3">
 			<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
 				Ricerca Avanzata
 			</button>
-		</div>
+		</div> -->
 	</div>
 
 
@@ -219,6 +222,7 @@ export default {
 	align-items: center;
 	justify-content: center;
 }
+
 .app-notfound {
 	margin-bottom: 2.5rem;
 	font-weight: bold;
