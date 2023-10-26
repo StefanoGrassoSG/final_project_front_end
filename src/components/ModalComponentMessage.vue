@@ -24,7 +24,6 @@ export default {
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then(res => {
-                    console.log(res.data)
                     if (res.data.result) {
                         this.messageSent = true
                     }
