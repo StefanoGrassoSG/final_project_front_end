@@ -50,6 +50,9 @@ export default {
 
 <template>
     <div class="container mb-5 ">
+        <div class="div-img-fly">
+            <img src="../assets/img/fly.png" alt="">
+        </div>
         <div class="row justify-content-center">
             <div class="col-10">
                 <div id="map" class="map shadow-lg p-3 mb-5 bg-white"></div>
@@ -59,11 +62,26 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.container {
+    position: relative;
+}
 .map {
     width: 100%;
     height: 500px;
     border-radius: 10px;
     border: 1px solid #ccc;
     margin-top: 20px;
+    z-index: 10;
+}
+
+.div-img-fly {
+    img{
+    z-index: 0;
+    position: absolute;
+    width: 110%;
+    left: -78px;
+    object-fit: cover;
+    }
 }
 </style>
