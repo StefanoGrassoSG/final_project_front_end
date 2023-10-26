@@ -38,14 +38,15 @@ export default {
 		var searchBoxHTML = ttSearchBox.getSearchBoxHTML()
 		let prova = this.$refs.prova;
 		prova.appendChild(searchBoxHTML);
-
+		let x = document.getElementsByClassName("tt-search-box-input");
+		x[0].setAttribute("value", `${this.store.inputSearchBar}`);
 		ttSearchBox.on("tomtom.searchbox.resultsfound", this.handleResultsFound)
 
 	},
 	methods: {
 		handleResultsFound(event) {
 			var results = event.data.results;
-			console.log(results)
+			// console.log(results)
 			let lat=results.fuzzySearch.results[0].position.lat
             let lon = results.fuzzySearch.results[0].position.lng
 			if (event.data.results.fuzzySearch.results.length === 0) {
@@ -79,11 +80,7 @@ export default {
 		},
 		nextPage() {
 			if (this.nextPageCounter < this.totalAptPages) {
-
-				console.log(this.nextPageCounter)
 				this.nextPageCounter++
-
-				console.log(this.nextPageCounter)
 			}
 			else {
 				this.nextPageCounter = 1
@@ -91,7 +88,6 @@ export default {
 			this.aptLoading = true
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 				.then(res => {
-					console.log(res.data.results)
 					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
@@ -104,9 +100,7 @@ export default {
 		,
 		prevPage() {
 			if (this.nextPageCounter > 1) {
-				console.log(this.nextPageCounter)
 				this.nextPageCounter--
-				console.log(this.nextPageCounter)
 			}
 			else {
 				this.nextPageCounter = this.totalAptPages
@@ -114,7 +108,6 @@ export default {
 			this.aptLoading = true
 			axios.get(`http://127.0.0.1:8000/api/apartment?page=${this.nextPageCounter}`)
 				.then(res => {
-					console.log(res.data.results)
 					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
@@ -129,6 +122,7 @@ export default {
         if(this.store.city,this.store.lat,this.store.lon) {
             this.search(this.store.city,this.store.lat,this.store.lon)
         }
+		// console.log('search apt',this.store.apartments)
 	},
 	components: {
 		BannerComponent,
