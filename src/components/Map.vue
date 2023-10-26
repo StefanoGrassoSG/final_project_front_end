@@ -50,8 +50,8 @@ export default {
 
 <template>
     <div class="container mb-5 ">
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-10">
                 <div id="map" class="map shadow-lg p-3 mb-5 bg-white"></div>
             </div>
         </div>
