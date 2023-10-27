@@ -43,8 +43,8 @@ export default {
 		handleResultsFound(event) {
 			var results = event.data.results;
 			this.store.inputSearchBar = results.autocomplete.context.inputQuery
-			let lat=results.fuzzySearch.results[0].position.lat
-            let lon = results.fuzzySearch.results[0].position.lng
+			let lat = results.fuzzySearch.results[0].position.lat
+			let lon = results.fuzzySearch.results[0].position.lng
 			this.store.lat = lat
 			this.store.lon = lon
 			this.store.city = results
@@ -183,11 +183,11 @@ export default {
 				<div v-if="store.apartments.length > 0 || store.apartments.length != null"
 					class="col-12 d-flex justify-content-center">
 					<button :disabled='nextPageCounter == 1' @click="prevPage" class="btn-contact-opp me-3">
-						&lt prev
+						prev
 					</button>
 					<button :disabled="currentPage == totalAptPages || store.apartments.length == store.totalApt"
 						@click="nextPage" class="btn-contact-opp ms-3">
-						next &gt
+						next
 					</button>
 				</div>
 
@@ -196,7 +196,7 @@ export default {
 
 
 	</div>
-	
+
 	<ReviewsComponent />
 
 	<CitationComponent />

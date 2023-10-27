@@ -350,7 +350,7 @@ export default {
                                     <h4 class="text-center text-md-start host-info">
                                         Informazioni
                                     </h4>
-                                    <ul class="fs-5">
+                                    <ul class="fs-5 d-flex flex-column align-items-center d-md-inline">
                                         <li>
                                             <span class="span-info">Host dal: </span>{{
                                                 singleApt.user.created_at.substr(0,
