@@ -76,7 +76,7 @@ export default {
                                 <img class="d-block w-100" v-if="singleApt.image[count].src"
                                     v-bind:src="singleApt.image[count].src" alt="First slide">
                                 <img class="d-block w-100" v-else
-                                    v-bind:src="'http://127.0.0.1:8000/storage/' + singleApt.image[count].path"
+                                    v-bind:src="'http://127.0.0.1:8000' + singleApt.image[count].path"
                                     alt="First slide">
                             </div>
 
