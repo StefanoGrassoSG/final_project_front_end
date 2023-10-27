@@ -51,6 +51,9 @@ export default {
 			let lat = results.fuzzySearch.results[0].position.lat
 			let lon = results.fuzzySearch.results[0].position.lng
 			console.log(results)
+			this.store.lat = lat
+			this.store.lon = lon
+			this.store.city = results
 			if (event.data.results.fuzzySearch.results.length === 0) {
 				this.getApt()
 			}
@@ -74,7 +77,7 @@ export default {
 				}
 			})
 				.then(res => {
-					console.log(res)
+					console.log(res, 'DEBUFG')
 					this.store.apartments = res.data.results.data
 					this.totalAptPages = res.data.results.last_page
 					this.aptLoading = false
@@ -175,7 +178,7 @@ export default {
 		</div>
 		<div class="mt-4">
 			<span class="search-link">
-				<router-link :to="{ name: 'search' }" class="btn-contact">Cerca</router-link>
+				<button @click="search(store.city, store.lat, store.lon, store.range)" class="btn-contact">Cerca</button>
 			</span>
 			<span class="mx-3">
 				<button type="button" class="btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
