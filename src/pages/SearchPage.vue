@@ -186,10 +186,9 @@ export default {
 
 
 		<div class="mt-3 d-flex align-items-center">
-			<label for="customRange1" class="form-label mx-3">Raggio in Km</label>
+			<label for="customRange1" class="form-label mx-3 col-4">Cerca entro {{ store.range }} Km</label>
 			<input type="range" class="form-range" id="customRange1" step="5" min="20" max="100" v-model="store.range">
-			<button @click="editRadius()" class="btn-contact mx-3">Search</button>
-			{{ store.range }}
+			<button @click="editRadius()" class="btn-contact mx-3 my-2 py-1">Filtra</button>
 		</div>
 	</div>
 
@@ -233,7 +232,7 @@ export default {
 		<ModalComponent />
 	</template>
 
-	
+
 	<ReviewsComponent />
 
 	<CitationComponent />
