@@ -35,7 +35,7 @@ export default {
             <img :src="'http://127.0.0.1:8000' + path" alt="" class="h-100 w-100 img-fluid">
         </div>
         <div class="info-apt m-3 d-flex flex-column align-items-center align-items-md-start justify-content-between">
-            <h4>
+            <h4 class="space">
                 {{ name }}
             </h4>
             <div>
@@ -67,6 +67,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.space {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
 .card {
     height: 500px;
 
