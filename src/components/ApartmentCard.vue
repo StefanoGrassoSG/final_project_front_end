@@ -38,7 +38,7 @@ export default {
             <h4 class="space">
                 {{ name }}
             </h4>
-            <div>
+            <div class="space">
                 <span class="info-small-apt">
                     Indirizzo:
                 </span>
