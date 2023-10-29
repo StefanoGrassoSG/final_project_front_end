@@ -98,12 +98,14 @@ export default {
                     <div class="col-md-6 col-12 col-big-img">
                         <div class="card big-img">
                             <div class="card-body p-0">
-                                <img class="img-fluid" v-bind:src="singleApt.cover_img" alt="">
+                                <!-- <img class="img-fluid" v-bind:src="singleApt.cover_img" alt="">
                                 <img src="../assets/img/icon_img.png" alt="" v-if="!singleApt.cover_img"
                                     class="h-100 img-fluid">
                                 <img :src="path" alt="" v-else-if="!singleApt.cover_img.startsWith('uploads')"
-                                    class="h-100 img-fluid">
+                                    class="h-100 img-fluid"> -->
                                 <img :src="'http://127.0.0.1:8000/storage/' + singleApt.cover_img" alt=""
+                                    class="h-100 w-100 img-fluid" v-if="singleApt.cover_img.startsWith('uploads')">
+                                <img :src="'http://127.0.0.1:8000' + singleApt.cover_img" alt=""
                                     class="h-100 w-100 img-fluid" v-else>
 
                             </div>
