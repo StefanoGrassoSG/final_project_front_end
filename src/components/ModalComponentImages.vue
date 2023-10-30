@@ -73,10 +73,10 @@ export default {
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" v-if="singleApt.image[count].src"
-                                    v-bind:src="singleApt.image[count].src" alt="First slide">
-                                <img class="d-block w-100" v-else
-                                    v-bind:src="'http://127.0.0.1:8000' + singleApt.image[count].path"
+                                <!-- <img class="d-block w-100" v-if="singleApt.image[count].src"
+                                    v-bind:src="singleApt.image[count].src" alt="First slide"> -->
+                                <img class="d-block w-100" 
+                                    v-bind:src="'http://127.0.0.1:8000/storage/' + singleApt.image[count].path"
                                     alt="First slide">
                             </div>
 
