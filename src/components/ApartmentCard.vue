@@ -32,7 +32,11 @@ export default {
         </span>
         <div class="img-fluid">
             
-            <img :src="'http://127.0.0.1:8000' + path" alt="" class="h-100 w-100 img-fluid">
+            <img v-if="path.startsWith('uploads')"
+                :src="'http://127.0.0.1:8000/storage/' + path" alt="" class="h-100 w-100 img-fluid">
+            <img v-else
+                :src="'http://127.0.0.1:8000' + path" alt=""
+                class="h-100 w-100 img-fluid">
         </div>
         <div class="info-apt m-3 d-flex flex-column align-items-center align-items-md-start justify-content-between">
             <h4 class="space">

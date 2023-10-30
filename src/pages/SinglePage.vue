@@ -103,8 +103,12 @@ export default {
                                     class="h-100 img-fluid">
                                 <img :src="path" alt="" v-else-if="!singleApt.cover_img.startsWith('uploads')"
                                     class="h-100 img-fluid"> -->
-                                <img :src="'http://127.0.0.1:8000' + singleApt.cover_img" alt=""
+                                <img v-if="singleApt.cover_img.startsWith('uploads')"
+                                    :src="'http://127.0.0.1:8000/storage/' + singleApt.cover_img" alt=""
                                     class="h-100 w-100 img-fluid">
+                                <img v-else
+                                :src="'http://127.0.0.1:8000' + singleApt.cover_img" alt=""
+                                class="h-100 w-100 img-fluid">
                             </div>
                         </div>
                     </div>
