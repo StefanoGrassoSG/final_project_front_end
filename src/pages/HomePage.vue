@@ -92,6 +92,7 @@ export default {
 				})
 		},
 		nextPage() {
+			// this.scrollToTop()
 			if (this.nextPageCounter < this.totalAptPages) {
 				this.nextPageCounter++
 			}
@@ -105,6 +106,8 @@ export default {
 					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
+					this.scrollToTop()
+					
 				})
 				.catch(err => {
 					console.log(err)
@@ -126,11 +129,15 @@ export default {
 					this.currentPage = res.data.results.current_page
 					this.store.apartments = res.data.results.data
 					this.aptLoading = false
+					this.scrollToTop()
 				})
 				.catch(err => {
 					console.log(err)
 					this.aptLoading = false
 				})
+		},
+		scrollToTop(){
+			this.$refs.top.scrollIntoView()
 		}
 	},
 	created() {
@@ -147,9 +154,9 @@ export default {
 </script>
 
 <template>
-	<BannerComponent />
+	<BannerComponent/>
 
-	<div class="search-bar-div">
+	<div class="search-bar-div" ref="top">
 		<div ref="prova" class="w-50 border-rounded-4">
 
 		</div>
@@ -164,6 +171,7 @@ export default {
 
 	<div class="container">
 		<div id="my-container" class="mt-5 d-flex justify-content-center flex-wrap align-content-stretch w-100">
+			
 			<template v-if="aptLoading">
 				<LoadingComponent />
 			</template>
